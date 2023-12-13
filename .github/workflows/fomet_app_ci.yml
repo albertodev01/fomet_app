@@ -1,0 +1,36 @@
+name: fomet_app_ci
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  verify_equation_package:
+    name: Fomet App action
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.3'
+          channel: 'stable'
+
+      - name: Installing dependencies
+        run: flutter pub get
+
+      - name: Making sure the package is formatted
+        run: dart format --set-exit-if-changed lib test
+
+      - name: Making sure that there are no analysis warnings or errors
+        run: flutter analyze --fatal-infos --fatal-warnings lib test
+
+      - name: Runing tests
+        run: flutter test --coverage
+
+      - name: Making sure that code coverage is at least 85
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          min_coverage: 1
+          
