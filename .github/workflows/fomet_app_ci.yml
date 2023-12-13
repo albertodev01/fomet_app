@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  verify_equation_package:
+  verify_flutter_application:
     name: Fomet App action
     runs-on: macos-latest
     steps:
