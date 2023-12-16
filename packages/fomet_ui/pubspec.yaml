@@ -1,0 +1,36 @@
+name: fomet_ui
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  fonts:
+    - family: Mukta
+      fonts:
+        - asset: fonts/Mukta-Bold.ttf
+          weight: 700
+        - asset: fonts/Mukta-ExtraBold.ttf
+          weight: 800
+        - asset: fonts/Mukta-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Mukta-Light.ttf
+          weight: 300
+        - asset: fonts/Mukta-Medium.ttf
+          weight: 500
+        - asset: fonts/Mukta-Regular.ttf
+          weight: 400
+        - asset: fonts/Mukta-SemiBold.ttf
+          weight: 600
+          style: italic
