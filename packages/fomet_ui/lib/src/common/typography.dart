@@ -8,7 +8,6 @@ abstract final class FometTypography {
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w400,
     color: FometColors.primaryText,
-    overflow: TextOverflow.ellipsis,
   );
 
   /// Bold.
@@ -16,7 +15,6 @@ abstract final class FometTypography {
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w700,
     color: FometColors.primaryText,
-    overflow: TextOverflow.ellipsis,
   );
 
   /// Light.
@@ -24,7 +22,6 @@ abstract final class FometTypography {
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w300,
     color: FometColors.primaryText,
-    overflow: TextOverflow.ellipsis,
   );
 
   /// Medium.
@@ -32,7 +29,6 @@ abstract final class FometTypography {
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w500,
     color: FometColors.primaryText,
-    overflow: TextOverflow.ellipsis,
   );
 
   /// Semi bold.
@@ -40,6 +36,13 @@ abstract final class FometTypography {
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w600,
     color: FometColors.primaryText,
-    overflow: TextOverflow.ellipsis,
+  );
+
+  /// Semi bold.
+  static const captionSmall = TextStyle(
+    fontFamily: 'Mukta',
+    fontWeight: FontWeight.w400,
+    color: Colors.grey,
+    fontSize: 12,
   );
 }

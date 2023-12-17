@@ -20,7 +20,10 @@ class SideNavigationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 24,
+        vertical: 12,
+      ),
       child: ValueListenableBuilder<int>(
         valueListenable: selectedIndex,
         builder: (context, currentIndex, child) {

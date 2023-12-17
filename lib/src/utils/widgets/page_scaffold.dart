@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
-import 'package:fomet_app/src/utils/constants.dart';
+import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,11 +29,19 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
     (iconData: Icons.info_outlined, text: context.l10n.about),
   ];
 
+  final selectedIndex = ValueNotifier<int>(0);
+
   /// Caches a [FometBottomNavigationBar] widget so that its state is not lost
   /// when removed from the tree.
-  late final bottomNavigationBar = FometBottomNavigationBar(
+  late FometBottomNavigationBar bottomNavigationBar = FometBottomNavigationBar(
     onItemTap: mapIndexToPath,
     items: items,
+    header: const LogoSvg(
+      width: 24,
+      height: 24,
+    ),
+    selectedIndex: selectedIndex,
+    child: widget.child,
   );
 
   /// Caches a [FometSideNavigationBar] widget so that its state is not lost
@@ -41,6 +49,11 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
   late FometSideNavigationBar sideNavigationBar = FometSideNavigationBar(
     onItemTap: mapIndexToPath,
     items: items,
+    header: const LogoSvg(
+      width: 64,
+      height: 64,
+    ),
+    selectedIndex: selectedIndex,
     child: widget.child,
   );
 
@@ -64,6 +77,21 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
       sideNavigationBar = FometSideNavigationBar(
         onItemTap: mapIndexToPath,
         items: items,
+        selectedIndex: selectedIndex,
+        header: const LogoSvg(
+          width: 64,
+          height: 64,
+        ),
+        child: widget.child,
+      );
+      bottomNavigationBar = FometBottomNavigationBar(
+        onItemTap: mapIndexToPath,
+        items: items,
+        selectedIndex: selectedIndex,
+        header: const LogoSvg(
+          width: 24,
+          height: 24,
+        ),
         child: widget.child,
       );
     }
@@ -78,16 +106,7 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
             return sideNavigationBar;
           }
 
-          return widget.child;
-        },
-      ),
-      bottomNavigationBar: LayoutBuilder(
-        builder: (context, dimensions) {
-          if (dimensions.maxWidth < scaffoldDesktopBreakpoint) {
-            return bottomNavigationBar;
-          }
-
-          return const SizedBox.shrink();
+          return bottomNavigationBar;
         },
       ),
     );

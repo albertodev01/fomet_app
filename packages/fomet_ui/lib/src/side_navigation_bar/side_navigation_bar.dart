@@ -16,13 +16,19 @@ class FometSideNavigationBar extends StatefulWidget {
   /// selected.
   final FometSideNavigationBarItemChanged onItemTap;
 
+  final Widget header;
+
   final Widget child;
+
+  final ValueNotifier<int> selectedIndex;
 
   /// Creates a [FometSideNavigationBar] widget.
   const FometSideNavigationBar({
     required this.items,
     required this.onItemTap,
+    required this.header,
     required this.child,
+    required this.selectedIndex,
     super.key,
   });
 
@@ -31,9 +37,6 @@ class FometSideNavigationBar extends StatefulWidget {
 }
 
 class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
-  /// Keeps track of the currently selected page index.
-  final selectedIndex = ValueNotifier<int>(0);
-
   late var children = generateChildren();
 
   List<Widget> generateChildren() {
@@ -44,9 +47,9 @@ class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
         final element = widget.items[index];
 
         return GestureDetector(
-          onTap: () => selectedIndex.value = index,
+          onTap: () => widget.selectedIndex.value = index,
           child: SideNavigationItem(
-            selectedIndex: selectedIndex,
+            selectedIndex: widget.selectedIndex,
             index: index,
             text: element.text,
             iconData: element.iconData,
@@ -60,7 +63,9 @@ class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
   void initState() {
     super.initState();
 
-    selectedIndex.addListener(() => widget.onItemTap(selectedIndex.value));
+    widget.selectedIndex.addListener(
+      () => widget.onItemTap(widget.selectedIndex.value),
+    );
   }
 
   @override
@@ -74,28 +79,41 @@ class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // The actual navigation bar
-        Container(
-          width: 256,
-          decoration: const BoxDecoration(
-            color: Color(0xFFF6F6F6),
-          ),
-          child: ListView(
-            children: children,
-          ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: scaffoldDesktopBreakpoint,
+          maxWidth: scaffoldDesktopBreakpoint,
         ),
-
-        // Separates the content from the bar
-        const VerticalDivider(
-          width: 2,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // The actual navigation bar
+            SizedBox(
+              width: 256,
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 36),
+                        child: widget.header,
+                      ),
+                      ...children,
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 24),
+            Expanded(
+              child: widget.child,
+            ),
+            const SizedBox(width: 8),
+          ],
         ),
-
-        Expanded(
-          child: widget.child,
-        ),
-      ],
+      ),
     );
   }
 }

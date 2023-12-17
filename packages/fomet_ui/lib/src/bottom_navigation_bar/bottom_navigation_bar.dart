@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:fomet_ui/src/bottom_navigation_bar/widget/bottom_navigation_item.dart';
-import 'package:fomet_ui/src/side_navigation_bar/widget/side_navigation_item.dart';
 
 /// A callback function used by [FometBottomNavigationBar] to indicate when the
 /// user taps on a [FometNavigationBarItem].
@@ -19,10 +18,19 @@ class FometBottomNavigationBar extends StatefulWidget {
   /// selected.
   final FometBottomNavigationBarItemChanged onItemTap;
 
+  final Widget child;
+
+  final Widget header;
+
+  final ValueNotifier<int> selectedIndex;
+
   /// Creates a [FometBottomNavigationBar] widget.
   const FometBottomNavigationBar({
     required this.items,
     required this.onItemTap,
+    required this.header,
+    required this.selectedIndex,
+    required this.child,
     super.key,
   });
 
@@ -32,9 +40,6 @@ class FometBottomNavigationBar extends StatefulWidget {
 }
 
 class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
-  /// Keeps track of the currently selected page index.
-  final selectedIndex = ValueNotifier<int>(0);
-
   late var children = generateChildren();
 
   List<Widget> generateChildren() {
@@ -46,10 +51,10 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
 
         return Expanded(
           child: GestureDetector(
-            onTap: () => selectedIndex.value = index,
+            onTap: () => widget.selectedIndex.value = index,
             child: Center(
               child: BottomNavigationItem(
-                selectedIndex: selectedIndex,
+                selectedIndex: widget.selectedIndex,
                 index: index,
                 text: element.text,
                 iconData: element.iconData,
@@ -65,7 +70,9 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
   void initState() {
     super.initState();
 
-    selectedIndex.addListener(() => widget.onItemTap(selectedIndex.value));
+    widget.selectedIndex.addListener(
+      () => widget.onItemTap(widget.selectedIndex.value),
+    );
   }
 
   @override
@@ -82,6 +89,42 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        // Top part
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 32,
+            vertical: 8,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              widget.header,
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.device_hub,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 32,
+          ),
+          child: Divider(
+            height: 1,
+          ),
+        ),
+
+        // Body
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: widget.child,
+          ),
+        ),
+
         // Separates the content from the bar
         const Divider(
           height: 2,
