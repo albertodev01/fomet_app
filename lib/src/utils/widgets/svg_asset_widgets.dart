@@ -162,3 +162,29 @@ final class YouTubeSvg extends SvgImage {
   @override
   String get assetPath => 'assets/svg/youtube_logo.svg';
 }
+
+/// The image of a catalog with some powder at the bottom.
+final class CatalogSvg extends SvgImage {
+  /// Creates a [CatalogSvg] widget.
+  const CatalogSvg({
+    super.width,
+    super.height,
+    super.key,
+  });
+
+  @override
+  String get assetPath => 'assets/svg/catalog.svg';
+}
+
+/// The image of a QR code.
+final class QRCodeSvg extends SvgImage {
+  /// Creates a [QRCodeSvg] widget.
+  const QRCodeSvg({
+    super.width,
+    super.height,
+    super.key,
+  });
+
+  @override
+  String get assetPath => 'assets/svg/qr.svg';
+}

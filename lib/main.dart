@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/app_router.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 /// The application's main entrypoint.
 void main() {
-  // Uses path-based navigation on web and hides the hash
-  usePathUrlStrategy();
-
   // Runs the app
   runApp(const FometApp());
 }

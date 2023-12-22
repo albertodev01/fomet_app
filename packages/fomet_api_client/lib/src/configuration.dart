@@ -1,3 +1,5 @@
-const apiBaseEndpoint = 'https://ordini.fomet.it/appservice';
+const apiBaseAddress = 'ordini.fomet.it';
 
-const apiEndpoint = '$apiBaseEndpoint/fometappservicesvc/fometappservicews.svc';
+const servicePath = 'appservice/fometappservicesvc/fometappservicews.svc';
+
+const productsEndpoint = '/articoli';

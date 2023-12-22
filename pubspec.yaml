@@ -16,9 +16,9 @@ dependencies:
     sdk: flutter
     
   flutter_svg: ^2.0.9
-  
-  flutter_web_plugins:
-    sdk: flutter
+
+  fomet_api_client:
+    path: packages/fomet_api_client
 
   fomet_ui:
     path: packages/fomet_ui
