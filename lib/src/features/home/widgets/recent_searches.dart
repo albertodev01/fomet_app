@@ -5,6 +5,6 @@ class RecentSearches extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('recent searches');
+    return const Text('recent searches');
   }
 }

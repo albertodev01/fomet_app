@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_ui/fomet_ui.dart';

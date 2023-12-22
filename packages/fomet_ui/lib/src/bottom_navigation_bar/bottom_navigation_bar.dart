@@ -40,7 +40,7 @@ class FometBottomNavigationBar extends StatefulWidget {
 }
 
 class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
-  late var children = generateChildren();
+  late List<Widget> children = generateChildren();
 
   List<Widget> generateChildren() {
     return List<Widget>.generate(

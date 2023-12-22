@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:fomet_app/src/features/home/widgets/multiple_choice.dart';
 import 'package:fomet_app/src/features/home/widgets/recent_searches.dart';
 import 'package:fomet_app/src/localization/localization.dart';
@@ -62,7 +61,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _Separator extends StatelessWidget {
-  const _Separator({super.key});
+  const _Separator();
 
   @override
   Widget build(BuildContext context) {

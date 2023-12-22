@@ -7,12 +7,13 @@ class ListEntryItem extends StatelessWidget {
   const ListEntryItem({
     required this.text,
     required this.value,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(26, 16, 0, 16),
+      padding: const EdgeInsets.fromLTRB(26, 16, 0, 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

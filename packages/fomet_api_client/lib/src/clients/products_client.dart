@@ -2,7 +2,6 @@ import 'dart:isolate';
 
 import 'package:fomet_api_client/src/clients/fomet_base_client.dart';
 import 'package:fomet_api_client/src/configuration.dart';
-import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_api_client/src/parsers/products_parser.dart';
 import 'package:http/http.dart' as http;
 

@@ -37,7 +37,7 @@ class FometSideNavigationBar extends StatefulWidget {
 }
 
 class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
-  late var children = generateChildren();
+  late List<Widget> children = generateChildren();
 
   List<Widget> generateChildren() {
     return List<Widget>.generate(

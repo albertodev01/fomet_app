@@ -14,7 +14,7 @@ class FaqSeparator extends StatelessWidget {
             child: Divider(),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: 24),
             child: LogoSvg(
               width: 24,
               height: 24,
