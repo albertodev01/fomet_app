@@ -2,7 +2,7 @@ import 'dart:isolate';
 
 import 'package:fomet_api_client/src/clients/fomet_base_client.dart';
 import 'package:fomet_api_client/src/configuration.dart';
-import 'package:fomet_api_client/src/parsers/products_parser.dart';
+import 'package:fomet_api_client/src/parsers/products/products_parser.dart';
 import 'package:http/http.dart' as http;
 
 base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
@@ -41,7 +41,4 @@ base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
       return parser.parse();
     });
   }
-
-  @override
-  Map<String, String> get headers => const {'x-api-key': 'm2lw-apgy.skqzxs'};
 }

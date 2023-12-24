@@ -1,4 +1,4 @@
-abstract interface class FometBaseParser<T> {
+abstract base class FometBaseParser<T> {
   const FometBaseParser();
-  T parse();
+  List<T> parse();
 }

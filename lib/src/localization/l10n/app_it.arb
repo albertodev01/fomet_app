@@ -37,5 +37,8 @@
   "productsCatalog": "Esplora il catalogo dei prodotti",
   "recentSearches": "Ricerche recenti",
   "or": "oppure",
-  "homeIntroText": "Sin dal principio, si sono voluti applicare su scala industriale metodi e sistemi di lavoro naturali. Uno dei nostri obiettivi è quello di realizzare prodotti che apportano al terreno anche attività biologica e componenti umiche al fine di contrastare il sempre maggiore declino produttivo dei terreni, la loro progressiva destrutturazione e difficoltà di lavorazione."
+  "homeIntroText": "Sin dal principio, si sono voluti applicare su scala industriale metodi e sistemi di lavoro naturali. Uno dei nostri obiettivi è quello di realizzare prodotti che apportano al terreno anche attività biologica e componenti umiche al fine di contrastare il sempre maggiore declino produttivo dei terreni, la loro progressiva destrutturazione e difficoltà di lavorazione.",
+  "category": "Categoria",
+  "variety": "Varietà",
+  "kind": "Tipo"
 }

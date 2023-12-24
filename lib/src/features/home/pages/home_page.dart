@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:fomet_app/src/features/home/widgets/multiple_choice.dart';
 import 'package:fomet_app/src/features/home/widgets/recent_searches.dart';
 import 'package:fomet_app/src/localization/localization.dart';
+import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_ui/fomet_ui.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
                     HomeOptionButton(
                       image: const CatalogSvg(height: 24, width: 24),
                       text: context.l10n.productsCatalog,
-                      onTap: () {},
+                      onTap: () async => context.push(catalogPagePath),
                     ),
                     HomeOptionButton(
                       image: const QRCodeSvg(height: 24, width: 24),

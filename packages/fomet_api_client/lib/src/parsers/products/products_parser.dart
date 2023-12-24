@@ -10,7 +10,7 @@ typedef FometProduct = ({
   String categoryDescription,
 });
 
-class FometProductsParser implements FometBaseParser<List<FometProduct>> {
+final class FometProductsParser extends FometBaseParser<FometProduct> {
   final String nodeName;
   final String xmlContent;
   final String? codeFilter;

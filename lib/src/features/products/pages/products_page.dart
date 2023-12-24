@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_app/src/features/products/pages/products_result_widget.dart';
 import 'package:fomet_app/src/features/products/widgets/products_loading_widget.dart';
+import 'package:fomet_app/src/utils/extensions.dart';
 import 'package:fomet_app/src/utils/widgets/loading_error_widget.dart';
 
 class ProductsPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class ProductsPage extends StatefulWidget {
 
 class _ProductsPageState extends State<ProductsPage> {
   late final future = FometProductsClient(
-    languageCode: Localizations.localeOf(context).languageCode.toUpperCase(),
+    languageCode: context.languageCode,
     noDuplicateCodes: true,
   ).execute();
 

@@ -37,5 +37,8 @@
   "productsCatalog": "Explore the products catalog",
   "recentSearches": "Recent searches",
   "or": "otherwise",
-  "homeIntroText": "From the very start, we applied natural methods and work systems on an industrial scale. One of our goals is to create products which bring biological activity and humic parts in order to counter the increasing productive decline of soils, their progressive decay and difficulty of cultivation."
+  "homeIntroText": "From the very start, we applied natural methods and work systems on an industrial scale. One of our goals is to create products which bring biological activity and humic parts in order to counter the increasing productive decline of soils, their progressive decay and difficulty of cultivation.",
+  "category": "Category",
+  "variety": "Variety",
+  "kind": "Kind"
 }

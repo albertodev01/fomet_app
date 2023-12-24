@@ -12,3 +12,6 @@ const aboutPagePath = '/about';
 
 /// Path to the error page.
 const errorPagePath = '/error';
+
+/// Path to the catalog page.
+const catalogPagePath = '/catalog';

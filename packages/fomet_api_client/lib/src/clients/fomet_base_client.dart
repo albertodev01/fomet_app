@@ -8,7 +8,8 @@ abstract base class FometBaseClient<T> {
 
   Future<T> execute();
 
-  Map<String, String> get headers;
+  /// Headers that must always be included in the request.
+  Map<String, String> get headers => const {'x-api-key': 'm2lw-apgy.skqzxs'};
 
   /// Builds an HTTPS uri based on [endpoint] and passes [queryParameters], if
   /// any. The authority is defined by [apiBaseAddress].
