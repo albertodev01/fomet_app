@@ -15,3 +15,5 @@ const errorPagePath = '/error';
 
 /// Path to the catalog page.
 const catalogPagePath = '/catalog';
+
+const qrScanPath = '/qr_scan';

@@ -5,10 +5,12 @@ final class CatalogPageState extends ChangeNotifier {
   var _category = const (code: '', description: '');
   var _variety = const (code: '', description: '');
   var _kind = const (code: '', description: '');
+  var _product = const (code: '', description: '');
 
   FometCatalogItem get category => _category;
   FometCatalogItem get variety => _variety;
   FometCatalogItem get kind => _kind;
+  FometCatalogItem get product => _product;
 
   set category(FometCatalogItem value) {
     if (value != _category) {
@@ -31,16 +33,18 @@ final class CatalogPageState extends ChangeNotifier {
     }
   }
 
-  bool get hasCategory =>
-      _category.code.isNotEmpty && _category.description.isNotEmpty;
-  bool get hasVariety =>
-      _variety.code.isNotEmpty && _variety.description.isNotEmpty;
-  bool get hasKind => _kind.code.isNotEmpty && _kind.description.isNotEmpty;
+  set product(FometCatalogItem value) {
+    if (value != _product) {
+      _product = value;
+      notifyListeners();
+    }
+  }
 
   void clear() {
     _category = const (code: '', description: '');
     _variety = const (code: '', description: '');
     _kind = const (code: '', description: '');
+    _product = const (code: '', description: '');
 
     notifyListeners();
   }

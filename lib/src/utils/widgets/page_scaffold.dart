@@ -99,15 +99,22 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, dimensions) {
-          if (dimensions.maxWidth >= scaffoldDesktopBreakpoint) {
-            return sideNavigationBar;
-          }
+    final safeSpaces = MediaQuery.of(context).padding;
 
-          return bottomNavigationBar;
-        },
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.only(
+          top: safeSpaces.top,
+        ),
+        child: LayoutBuilder(
+          builder: (context, dimensions) {
+            if (dimensions.maxWidth >= scaffoldDesktopBreakpoint) {
+              return sideNavigationBar;
+            }
+
+            return bottomNavigationBar;
+          },
+        ),
       ),
     );
   }

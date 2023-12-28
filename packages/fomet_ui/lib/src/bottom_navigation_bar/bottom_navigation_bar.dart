@@ -132,12 +132,18 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
 
         // The actual navigation bar
         Container(
-          height: 62,
+          height: 64 + MediaQuery.of(context).padding.bottom,
           decoration: const BoxDecoration(
             color: Color(0xFFF6F6F6),
           ),
-          child: Row(
-            children: children,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: SizedBox(
+              height: 64,
+              child: Row(
+                children: children,
+              ),
+            ),
           ),
         ),
       ],

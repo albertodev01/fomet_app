@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/catalog_progress.dart';
+import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/views/category_view.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/views/kind_view.dart';
+import 'package:fomet_app/src/features/home/widgets/catalog/views/products_details_view.dart';
+import 'package:fomet_app/src/features/home/widgets/catalog/views/products_view.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/views/variety_view.dart';
 
 class CatalogPage extends StatefulWidget {
@@ -13,6 +16,13 @@ class CatalogPage extends StatefulWidget {
 
 class _CatalogPageState extends State<CatalogPage> {
   final controller = PageController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    context.catalogState.clear();
+  }
 
   @override
   void dispose() {
@@ -33,6 +43,8 @@ class _CatalogPageState extends State<CatalogPage> {
               CategoryView(controller: controller),
               VarietyView(controller: controller),
               KindView(controller: controller),
+              ProductsView(controller: controller),
+              ProductsDetailsView(controller: controller),
             ],
           ),
         ),

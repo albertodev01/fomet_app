@@ -5,9 +5,13 @@ class FometFutureBuilder<T> extends StatelessWidget {
   final Future<T> future;
   final EdgeInsets padding;
   final Widget Function(T) onSuccess;
+  final Widget? errorWidget;
+  final Widget? loadingWidget;
   const FometFutureBuilder({
     required this.future,
     required this.onSuccess,
+    this.errorWidget,
+    this.loadingWidget,
     this.padding = EdgeInsets.zero,
     super.key,
   });
@@ -24,12 +28,13 @@ class FometFutureBuilder<T> extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
-            return const LoadingErrorWidget();
+            return errorWidget ?? const LoadingErrorWidget();
           }
 
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return loadingWidget ??
+              const Center(
+                child: CircularProgressIndicator(),
+              );
         },
       ),
     );

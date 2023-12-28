@@ -40,5 +40,7 @@
   "homeIntroText": "From the very start, we applied natural methods and work systems on an industrial scale. One of our goals is to create products which bring biological activity and humic parts in order to counter the increasing productive decline of soils, their progressive decay and difficulty of cultivation.",
   "category": "Category",
   "variety": "Variety",
-  "kind": "Kind"
+  "kind": "Kind",
+  "qrCodeHint": "Wait for the camera to start and frame the QR code.",
+  "qrCodeError": "Invalid QR code. Try again!"
 }

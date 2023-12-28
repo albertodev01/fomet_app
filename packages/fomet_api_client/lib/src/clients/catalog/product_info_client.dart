@@ -4,7 +4,7 @@ import 'package:fomet_api_client/src/parsers/catalog/product_info_parser.dart';
 import 'package:http/http.dart' as http;
 
 base class FometProductInfoClient
-    extends FometBaseClient<List<FometCatalogProductInfo>> {
+    extends FometBaseClient<FometCatalogProductInfo> {
   final String languageCode;
   final String categoryCode;
   final String varietyCode;
@@ -16,10 +16,10 @@ base class FometProductInfoClient
     required this.categoryCode,
     required this.varietyCode,
     required this.productCode,
-  }) : super(endpoint: varietiesEndpoint);
+  }) : super(endpoint: productEndpoint);
 
   @override
-  Future<List<FometCatalogProductInfo>> execute() async {
+  Future<FometCatalogProductInfo> execute() async {
     final uri = buildEndpointUri(
       queryParameters: {
         'mLingua': languageCode,
@@ -30,6 +30,10 @@ base class FometProductInfoClient
     );
 
     final response = await http.get(uri, headers: headers);
-    return FometCatalogProductInfoParser(xmlContent: response.body).parse();
+    final result = FometCatalogProductInfoParser(
+      xmlContent: response.body,
+    ).parse();
+
+    return result.first;
   }
 }

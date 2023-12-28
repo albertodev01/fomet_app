@@ -1,5 +1,7 @@
 PODS:
   - FlutterMacOS (1.0.0)
+  - mobile_scanner (3.5.5):
+    - FlutterMacOS
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -8,12 +10,15 @@ PODS:
 
 DEPENDENCIES:
   - FlutterMacOS (from `Flutter/ephemeral`)
+  - mobile_scanner (from `Flutter/ephemeral/.symlinks/plugins/mobile_scanner/macos`)
   - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
 
 EXTERNAL SOURCES:
   FlutterMacOS:
     :path: Flutter/ephemeral
+  mobile_scanner:
+    :path: Flutter/ephemeral/.symlinks/plugins/mobile_scanner/macos
   shared_preferences_foundation:
     :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/darwin
   url_launcher_macos:
@@ -21,6 +26,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  mobile_scanner: d12930b68bf502497f78b8b5182aeccfaa1e04f6
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   url_launcher_macos: d2691c7dd33ed713bf3544850a623080ec693d95
 
