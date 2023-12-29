@@ -1,8 +1,6 @@
 name: fomet_app
 description: "Official application of the Fomet SpA company."
-
 publish_to: 'none'
-
 version: 1.0.0+1
 
 environment:
@@ -15,20 +13,24 @@ dependencies:
   flutter_localizations:
     sdk: flutter
     
+  # Used to load vectorial assets  
   flutter_svg: ^2.0.9
 
+  # HTTP client that connects to the Fomet web service.
   fomet_api_client:
     path: packages/fomet_api_client
 
+  # Component library
   fomet_ui:
     path: packages/fomet_ui
   
+  # Used by `MaterialApp.router`
   go_router: ^12.1.3
 
+  # QR code scanner
   mobile_scanner: ^3.5.5
 
-  shared_preferences: ^2.2.2
-
+  # Used to open links on the default browser
   url_launcher: ^6.2.2
 
 dev_dependencies:
@@ -38,7 +40,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  # Required for localization
   generate: true
   
+  # Use references to folders rather than individual files. It makes maintenance easier
+  # in case file names changed in the future.
   assets:
     - assets/svg/

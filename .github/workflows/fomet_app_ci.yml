@@ -8,7 +8,7 @@ on:
 
 jobs:
   verify_flutter_application:
-    name: Fomet App action
+    name: FometApp action
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
