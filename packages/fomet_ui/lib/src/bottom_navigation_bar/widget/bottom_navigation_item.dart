@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
+/// A widget with an interactive icon and a label underneath that is used by
+/// [FometBottomNavigationBar].
+///
+/// The icon color changes when [index] has the same value as [selectedIndex].
 class BottomNavigationItem extends StatelessWidget {
+  /// The index of the currently selected item in the [FometBottomNavigationBar]
+  /// widget.
   final ValueNotifier<int> selectedIndex;
+
+  /// This item's index.
   final int index;
+
+  /// The text underneath [iconData].
   final String text;
+
+  /// The icon above [text].
   final IconData iconData;
+
+  /// Creates a [BottomNavigationItem] widget.
   const BottomNavigationItem({
     required this.selectedIndex,
     required this.index,
@@ -24,8 +38,10 @@ class BottomNavigationItem extends StatelessWidget {
           builder: (context, currentIndex, _) {
             return Icon(
               iconData,
-              size: 24,
-              color: index == currentIndex ? FometColors.primary : Colors.grey,
+              size: FometDimensions.space3x,
+              color: index == currentIndex
+                  ? FometColors.primary
+                  : FometColors.inactiveText,
             );
           },
         ),
@@ -33,7 +49,7 @@ class BottomNavigationItem extends StatelessWidget {
         Text(
           text,
           style: FometTypography.light.copyWith(
-            color: Colors.grey,
+            color: FometColors.inactiveText,
           ),
         ),
       ],

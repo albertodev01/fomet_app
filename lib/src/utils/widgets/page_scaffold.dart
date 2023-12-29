@@ -37,12 +37,12 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
   late FometBottomNavigationBar bottomNavigationBar = FometBottomNavigationBar(
     onItemTap: mapIndexToPath,
     items: items,
-    header: const LogoSvg(
+    topLeadingIcon: const LogoSvg(
       width: 24,
       height: 24,
     ),
     selectedIndex: selectedIndex,
-    appStatusWidget: const VersionCodeChecker(),
+    topTrailingIcon: const VersionCodeChecker(),
     child: widget.child,
   );
 
@@ -51,12 +51,12 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
   late FometSideNavigationBar sideNavigationBar = FometSideNavigationBar(
     onItemTap: mapIndexToPath,
     items: items,
-    header: const LogoSvg(
+    sidebarLeadingIcon: const LogoSvg(
       width: 64,
       height: 64,
     ),
     selectedIndex: selectedIndex,
-    appStatusWidget: const VersionCodeChecker(),
+    sidebarTrailingIcon: const VersionCodeChecker(),
     child: widget.child,
   );
 
@@ -81,20 +81,22 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
         onItemTap: mapIndexToPath,
         items: items,
         selectedIndex: selectedIndex,
-        header: const LogoSvg(
+        sidebarLeadingIcon: const LogoSvg(
           width: 64,
           height: 64,
         ),
+        sidebarTrailingIcon: const VersionCodeChecker(),
         child: widget.child,
       );
       bottomNavigationBar = FometBottomNavigationBar(
         onItemTap: mapIndexToPath,
         items: items,
         selectedIndex: selectedIndex,
-        header: const LogoSvg(
+        topLeadingIcon: const LogoSvg(
           width: 24,
           height: 24,
         ),
+        topTrailingIcon: const VersionCodeChecker(),
         child: widget.child,
       );
     }

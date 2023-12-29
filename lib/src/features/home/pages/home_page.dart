@@ -26,14 +26,14 @@ class HomePage extends StatelessWidget {
               style: FometTypography.regular,
             ),
           ),
-          HomeOptionButton(
-            image: const CatalogSvg(height: 24, width: 24),
+          FometButton(
+            leadingIcon: const CatalogSvg(height: 24, width: 24),
             text: context.l10n.productsCatalog,
             onTap: () async => context.push(catalogPagePath),
           ),
           const _Separator(),
-          HomeOptionButton(
-            image: const QRCodeSvg(height: 24, width: 24),
+          FometButton(
+            leadingIcon: const QRCodeSvg(height: 24, width: 24),
             text: context.l10n.qrCode,
             onTap: () async => context.push(qrScanPath),
           ),

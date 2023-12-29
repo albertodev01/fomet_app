@@ -38,11 +38,11 @@ abstract final class FometTypography {
     color: FometColors.primaryText,
   );
 
-  /// Semi bold.
+  /// Caption small.
   static const captionSmall = TextStyle(
     fontFamily: 'Mukta',
     fontWeight: FontWeight.w400,
-    color: Colors.grey,
+    color: FometColors.inactiveText,
     fontSize: 12,
   );
 }

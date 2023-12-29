@@ -1,3 +1,8 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+ - First stable release of the `fomet_ui` package.
+ - Added the `FometCard` component
+ - Added the `FometSideNavigationBar` component
+ - Added the `FometBottomNavigationBar` component
+ - Added the `FometButton` component
+ - Added unit, widget and golden tests for all components

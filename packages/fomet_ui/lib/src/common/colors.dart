@@ -22,4 +22,7 @@ abstract final class FometColors {
 
   /// Secondary text color.
   static const secondaryText = Color(0xFF633B1A);
+
+  /// Inactive text color.
+  static const inactiveText = Color(0xFF9E9E9E);
 }

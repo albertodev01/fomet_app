@@ -44,24 +44,26 @@ class _CategoryViewState extends State<CategoryView> {
             future: future,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             onSuccess: (data) {
-              return ListView.builder(
+              return ListView.separated(
                 itemCount: data.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
                 itemBuilder: (context, index) {
                   final item = data[index];
 
-                  return ListTile(
+                  return FometCard(
                     onTap: () async => onItemTap(item),
-                    title: Text(
+                    content: Text(
                       item.description,
                       style: FometTypography.regular,
                     ),
-                    subtitle: Text(
+                    secondaryContent: Text(
                       item.code,
                       style: FometTypography.semiBold.copyWith(
                         color: FometColors.secondary,
                         fontSize: 12,
                       ),
                     ),
+                    trailingIcon: const Icon(Icons.chevron_right),
                   );
                 },
               );
