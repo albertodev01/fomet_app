@@ -17,3 +17,5 @@ const errorPagePath = '/error';
 const catalogPagePath = '/catalog';
 
 const qrScanPath = '/qr_scan';
+
+const productDetailsPath = 'product_details';

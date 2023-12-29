@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fomet_app/src/features/products/state/products_page_state.dart';
+import 'package:fomet_app/src/features/products/widgets/inherited_products_state.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/app_router.dart';
 import 'package:fomet_ui/fomet_ui.dart';
@@ -16,29 +18,32 @@ class FometApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      // Theme configurations
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: FometColors.seed,
-          primary: FometColors.primary,
-          secondary: FometColors.secondary,
+    return InheritedProductsState(
+      productsPageState: ProductsPageState(),
+      child: MaterialApp.router(
+        // Theme configurations
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: FometColors.seed,
+            primary: FometColors.primary,
+            secondary: FometColors.secondary,
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+
+        // Route management
+        routerConfig: appRouter,
+
+        // Localization setup
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+
+        // Hiding the debug banner
+        debugShowCheckedModeBanner: false,
+
+        // Unique restoration id
+        restorationScopeId: 'fomet-app',
       ),
-
-      // Route management
-      routerConfig: appRouter,
-
-      // Localization setup
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-
-      // Hiding the debug banner
-      debugShowCheckedModeBanner: false,
-
-      // Unique restoration id
-      restorationScopeId: 'fomet-app',
     );
   }
 }

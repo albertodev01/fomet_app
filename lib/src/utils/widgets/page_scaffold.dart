@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
+import 'package:fomet_app/src/utils/widgets/version_code_checker.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,6 +42,7 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
       height: 24,
     ),
     selectedIndex: selectedIndex,
+    appStatusWidget: const VersionCodeChecker(),
     child: widget.child,
   );
 
@@ -54,6 +56,7 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
       height: 64,
     ),
     selectedIndex: selectedIndex,
+    appStatusWidget: const VersionCodeChecker(),
     child: widget.child,
   );
 

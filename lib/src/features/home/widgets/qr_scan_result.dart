@@ -33,8 +33,10 @@ class _QRScanResultState extends State<QRScanResult> {
                 'https://ordini.fomet.it/appservice/fometappservicesvc/fometappservicews.svc/DownloadFile?mCodArt=${widget.code}',
               ),
             );
-            widget.onDialogClose();
-            Navigator.of(context).pop();
+            if (mounted) {
+              widget.onDialogClose();
+              Navigator.of(context).pop();
+            }
           },
           child: const Text('code'),
         );

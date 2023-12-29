@@ -24,6 +24,8 @@ class FometBottomNavigationBar extends StatefulWidget {
 
   final ValueNotifier<int> selectedIndex;
 
+  final Widget? appStatusWidget;
+
   /// Creates a [FometBottomNavigationBar] widget.
   const FometBottomNavigationBar({
     required this.items,
@@ -31,6 +33,7 @@ class FometBottomNavigationBar extends StatefulWidget {
     required this.header,
     required this.selectedIndex,
     required this.child,
+    this.appStatusWidget,
     super.key,
   });
 
@@ -99,12 +102,7 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               widget.header,
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.device_hub,
-                ),
-              ),
+              widget.appStatusWidget ?? const SizedBox.shrink(),
             ],
           ),
         ),

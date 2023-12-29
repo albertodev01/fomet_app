@@ -42,7 +42,7 @@ android {
 
     defaultConfig {
         applicationId "fometapp.buggiani.app.flutter_app"
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

@@ -22,6 +22,8 @@ class FometSideNavigationBar extends StatefulWidget {
 
   final ValueNotifier<int> selectedIndex;
 
+  final Widget? appStatusWidget;
+
   /// Creates a [FometSideNavigationBar] widget.
   const FometSideNavigationBar({
     required this.items,
@@ -29,6 +31,7 @@ class FometSideNavigationBar extends StatefulWidget {
     required this.header,
     required this.child,
     required this.selectedIndex,
+    this.appStatusWidget,
     super.key,
   });
 
@@ -101,6 +104,11 @@ class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
                         child: widget.header,
                       ),
                       ...children,
+                      if (widget.appStatusWidget != null)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: widget.appStatusWidget,
+                        ),
                     ],
                   ),
                 ),

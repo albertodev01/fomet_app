@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fomet_app/src/features/home/widgets/catalog/catalog_title.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
+import 'package:fomet_app/src/features/home/widgets/catalog/section_header.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 
 class KindView extends StatelessWidget {
@@ -23,7 +23,7 @@ class KindView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CatalogHeader(
+        SectionHeader(
           title: context.l10n.kind,
           backButtonTap: () async => controller.animateToPage(
             1,

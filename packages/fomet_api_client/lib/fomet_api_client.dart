@@ -3,6 +3,7 @@
 /// More dartdocs go here.
 library fomet_api_client;
 
+export 'src/clients/app_version_client.dart';
 export 'src/clients/catalog/category_client.dart';
 export 'src/clients/catalog/product_info_client.dart';
 export 'src/clients/catalog/products_client.dart';

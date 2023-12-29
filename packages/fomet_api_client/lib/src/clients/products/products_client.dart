@@ -7,14 +7,10 @@ import 'package:http/http.dart' as http;
 
 base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
   final String languageCode;
-  final String? codeFilter;
-  final bool noDuplicateCodes;
 
   /// Creates a [FometProductsClient] client.
   const FometProductsClient({
     required this.languageCode,
-    this.noDuplicateCodes = false,
-    this.codeFilter,
   }) : super(endpoint: productsEndpoint);
 
   @override
@@ -34,8 +30,6 @@ base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
       final parser = FometProductsParser(
         xmlContent: response.body,
         nodeName: 'itemA',
-        codeFilter: codeFilter,
-        noDuplicateCodes: noDuplicateCodes,
       );
 
       return parser.parse();

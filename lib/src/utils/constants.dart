@@ -1,1 +1,1 @@
-const test = 'a';
+const serviceInternalCode = '10';

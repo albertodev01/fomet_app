@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
-import 'package:fomet_app/src/features/home/widgets/catalog/catalog_title.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
+import 'package:fomet_app/src/features/home/widgets/catalog/section_header.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/utils/extensions.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
@@ -39,7 +39,7 @@ class _ProductsViewState extends State<ProductsView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CatalogHeader(
+        SectionHeader(
           title: context.l10n.products,
           backButtonTap: () async => widget.controller.animateToPage(
             2,

@@ -13,3 +13,5 @@ const varietiesEndpoint = '/varieta';
 const productImageEndpoint = '/downloadimage';
 
 const codeValidationEndpoint = '/validaarticolo';
+
+const appVersionEndpoint = '/versionresource';

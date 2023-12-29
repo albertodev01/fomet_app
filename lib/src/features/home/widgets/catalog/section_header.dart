@@ -3,12 +3,14 @@ import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
 
-class CatalogHeader extends StatelessWidget {
+class SectionHeader extends StatelessWidget {
   final String title;
   final VoidCallback? backButtonTap;
-  const CatalogHeader({
+  final VoidCallback? closeButtonTap;
+  const SectionHeader({
     required this.title,
     this.backButtonTap,
+    this.closeButtonTap,
     super.key,
   });
 
@@ -39,7 +41,7 @@ class CatalogHeader extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () => context.go(homePagePath),
+            onPressed: closeButtonTap ?? () => context.go(homePagePath),
             icon: const Icon(
               Icons.close,
               size: 16,

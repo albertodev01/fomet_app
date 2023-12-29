@@ -8,6 +8,7 @@ import 'package:fomet_app/src/features/home/pages/home_page.dart';
 import 'package:fomet_app/src/features/home/pages/qr_scan_page.dart';
 import 'package:fomet_app/src/features/home/state/catalog_page_state.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
+import 'package:fomet_app/src/features/products/pages/product_details_page.dart';
 import 'package:fomet_app/src/features/products/pages/products_page.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/error_page.dart';
@@ -36,6 +37,13 @@ final appRouter = GoRouter(
           path: productsPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
           builder: (_, __) => const ProductsPage(),
+          routes: [
+            GoRoute(
+              path: productDetailsPath,
+              parentNavigatorKey: _bottomNavigatorKey,
+              builder: (_, __) => const ProductsDetailsPage(),
+            ),
+          ],
         ),
         GoRoute(
           path: faqPagePath,
