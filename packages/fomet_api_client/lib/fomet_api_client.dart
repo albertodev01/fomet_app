@@ -1,6 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// The HTTP client of the FometApp application.
 library fomet_api_client;
 
 export 'src/clients/app_version_client.dart';
