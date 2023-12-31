@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
+import 'package:fomet_ui/src/common/tokens.dart';
 import 'package:fomet_ui/src/side_navigation_bar/widget/side_navigation_item.dart';
 
 /// A callback function used by [FometSideNavigationBar] to indicate when the
@@ -113,7 +114,7 @@ class _FometSideNavigationBarState extends State<FometSideNavigationBar> {
           children: [
             // The actual navigation bar
             SizedBox(
-              width: 256,
+              width: FometSideNavigationTokens.sideBarWidth,
               child: SingleChildScrollView(
                 child: Center(
                   child: Column(

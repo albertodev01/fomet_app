@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fomet_app/src/features/home/widgets/multiple_choice.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/centered_scrollable_content.dart';

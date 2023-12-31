@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
+import 'package:fomet_ui/src/common/tokens.dart';
 
 /// An information card component is a panel with slightly rounded corners and
 /// an elevation shadow. The main content of the widget is represented by
@@ -50,10 +51,10 @@ class FometCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        elevation: 2,
+        elevation: FometCardTokens.elevation,
         shadowColor: FometColors.primary,
-        color: Colors.white,
-        surfaceTintColor: Colors.white,
+        color: FometCardTokens.backgroundColor,
+        surfaceTintColor: FometCardTokens.backgroundColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: FometDimensions.space2x,
@@ -61,6 +62,7 @@ class FometCard extends StatelessWidget {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -68,10 +70,12 @@ class FometCard extends StatelessWidget {
                   trailing,
                 ],
               ),
-              const SizedBox(
-                height: FometDimensions.space1x,
-              ),
-              secondaryContent ?? const SizedBox.shrink(),
+              if (secondaryContent != null) ...[
+                const SizedBox(
+                  height: FometDimensions.space1x,
+                ),
+                secondaryContent!,
+              ],
             ],
           ),
         ),

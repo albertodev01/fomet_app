@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
+import 'package:fomet_ui/src/common/tokens.dart';
 
 /// A widget with an interactive icon and a label underneath that is used by
 /// [FometBottomNavigationBar].
@@ -45,7 +46,9 @@ class BottomNavigationItem extends StatelessWidget {
             );
           },
         ),
-        const SizedBox(height: 2),
+        const SizedBox(
+          height: FometBottomNavigationTokens.buttonItemInnerSpace,
+        ),
         Text(
           text,
           style: FometTypography.light.copyWith(

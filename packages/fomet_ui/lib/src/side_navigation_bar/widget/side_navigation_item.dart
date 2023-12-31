@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
+import 'package:fomet_ui/src/common/tokens.dart';
 
 /// A widget with an icon, a label on the right and and interactive border that
 /// is used by [FometSideNavigationBar].
@@ -41,7 +42,7 @@ class SideNavigationItem extends StatelessWidget {
           // The container around the button animates the border color when it
           // changes.
           return AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
+            duration: FometSideNavigationTokens.borderColorDuration,
             height: FometDimensions.space6x,
             decoration: BoxDecoration(
               border: index == currentIndex

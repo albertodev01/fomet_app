@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:fomet_ui/src/bottom_navigation_bar/widget/bottom_navigation_item.dart';
+import 'package:fomet_ui/src/common/tokens.dart';
 
 /// A callback function used by [FometBottomNavigationBar] to indicate when the
 /// user taps on a [FometNavigationBarItem].
@@ -130,7 +131,7 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
           padding: EdgeInsets.symmetric(
             horizontal: FometDimensions.space4x,
           ),
-          child: Divider(height: 1),
+          child: Divider(height: FometBottomNavigationTokens.dividersHeight),
         ),
 
         // Body
@@ -144,13 +145,13 @@ class _FometBottomNavigationBarState extends State<FometBottomNavigationBar> {
         ),
 
         // Separates the content from the bar
-        const Divider(height: 2),
+        const Divider(height: FometBottomNavigationTokens.dividersHeight),
 
         // The actual navigation bar
         Container(
           height: FometDimensions.large + MediaQuery.of(context).padding.bottom,
           decoration: const BoxDecoration(
-            color: Color(0xFFF6F6F6),
+            color: FometBottomNavigationTokens.barBackgroundColor,
           ),
           child: Align(
             alignment: Alignment.topCenter,
