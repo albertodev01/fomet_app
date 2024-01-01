@@ -4,7 +4,12 @@ import 'package:fomet_api_client/src/parsers/catalog/category_parser.dart';
 import 'package:fomet_api_client/src/parsers/fomet_catalog_base_parser.dart';
 import 'package:http/http.dart' as http;
 
+/// Fetches the categories list and returns them into a list of
+/// [FometCatalogItem] objects.
 base class FometCategoryClient extends FometBaseClient<List<FometCatalogItem>> {
+  /// {@template fomet_api_client.clients.language_code}
+  /// The two-letters language code.
+  /// {@endtemplate}
   final String languageCode;
 
   /// Creates a [FometCategoryClient] client.

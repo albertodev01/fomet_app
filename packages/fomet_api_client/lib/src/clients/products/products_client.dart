@@ -6,6 +6,7 @@ import 'package:fomet_api_client/src/parsers/products/products_parser.dart';
 import 'package:http/http.dart' as http;
 
 base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
+  /// {@macro fomet_api_client.clients.language_code}
   final String languageCode;
 
   /// Creates a [FometProductsClient] client.
@@ -27,11 +28,7 @@ base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
     final response = await http.get(uri, headers: headers);
 
     return Isolate.run<List<FometProduct>>(() {
-      final parser = FometProductsParser(
-        xmlContent: response.body,
-        nodeName: 'itemA',
-      );
-
+      final parser = FometProductsParser(xmlContent: response.body);
       return parser.parse();
     });
   }
