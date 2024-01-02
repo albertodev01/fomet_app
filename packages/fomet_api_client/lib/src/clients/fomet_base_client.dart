@@ -4,32 +4,43 @@ import 'package:http/http.dart' as http;
 /// A base class for creating HTTP clients that make requests to the Fomet web
 /// services.
 ///
-/// To correctly build an [Uri] object that points to a resource, use the
-/// [buildEndpointUri] method rather than hard-coding headers and query
-/// parameters (if any).
+/// Subclasses should always use the [fometGetRequest] method to make GET
+/// requests to the Fomet web services. It configures Uris, headers and query
+/// parameters automatically.
+///
+/// The [client] parameter is useful if you want to provide a custom client for
+/// a long-lived connection or in a test environment to provide mocks.
 abstract base class FometBaseClient<T> {
   /// The endpoint at which the HTTP request is made.
   final String endpoint;
 
+  /// An [http.Client].
+  final http.Client? client;
+
   /// Creates a [FometBaseClient] object.
   const FometBaseClient({
     required this.endpoint,
+    this.client,
   });
 
   /// Executes the HTTP call and returns the result [T].
   Future<T> execute();
 
-  /// Headers that must always be included in the request.
-  Map<String, String> get headers => const {'x-api-key': 'm2lw-apgy.skqzxs'};
+  /// Makes a GET request to the Fomet web service and automatically configures
+  /// headers. If [client] is `null`, a default one is used.
+  Future<http.Response> fometGetRequest({
+    Map<String, String> queryParameters = const {},
+  }) async {
+    final uri = Uri.https(
+      apiBaseAddress,
+      '$servicePath$endpoint',
+      queryParameters,
+    );
 
-  /// Builds the HTTPS uri based on [endpoint] and passes [queryParameters], if
-  /// any. The authority is defined by [apiBaseAddress].
-  Uri buildEndpointUri({Map<String, String> queryParameters = const {}}) {
-    // Builds the path to the resource that will return the response. Slashes
-    // should NOT be handled here.
-    final path = '$servicePath$endpoint';
-
-    // Returns the HTTPS uri that points to the resource on the server.
-    return Uri.https(apiBaseAddress, path, queryParameters);
+    if (client != null) {
+      return client!.get(uri, headers: headers);
+    } else {
+      return http.get(uri, headers: headers);
+    }
   }
 }

@@ -2,10 +2,12 @@ import 'dart:typed_data';
 
 import 'package:fomet_api_client/src/clients/fomet_base_client.dart';
 import 'package:fomet_api_client/src/configuration.dart';
-import 'package:http/http.dart' as http;
 
-/// An HTTP client that returns an image of a product (as [Uint8List] object)
-/// whose code is [productCode].
+/// An HTTP client that retrieves an image of a product whose code is
+/// [productCode].
+///
+/// The image fetched from the server is in PNG format and [execute] returns
+/// its byte representation (as [Uint8List] type).
 base class FometProductImageClient extends FometBaseClient<Uint8List> {
   /// The product code associated to the image.
   final String productCode;
@@ -13,15 +15,14 @@ base class FometProductImageClient extends FometBaseClient<Uint8List> {
   /// Creates a [FometProductImageClient] client.
   const FometProductImageClient({
     required this.productCode,
+    super.client,
   }) : super(endpoint: productImageEndpoint);
 
   @override
   Future<Uint8List> execute() async {
-    final uri = buildEndpointUri(
+    final response = await fometGetRequest(
       queryParameters: {'mCodArt': productCode},
     );
-
-    final response = await http.get(uri, headers: headers);
     return response.bodyBytes;
   }
 }

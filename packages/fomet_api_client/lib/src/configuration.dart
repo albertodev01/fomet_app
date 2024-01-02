@@ -24,3 +24,6 @@ const codeValidationEndpoint = '/validaarticolo';
 
 /// `/versionresource` endpoint.
 const appVersionEndpoint = '/versionresource';
+
+/// Headers that must always be included in HTTP requests.
+const headers = {'x-api-key': 'm2lw-apgy.skqzxs'};

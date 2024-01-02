@@ -16,6 +16,7 @@ void main() {
       expect(productImageEndpoint, equals('/downloadimage'));
       expect(codeValidationEndpoint, equals('/validaarticolo'));
       expect(appVersionEndpoint, equals('/versionresource'));
+      expect(headers, equals(const {'x-api-key': 'm2lw-apgy.skqzxs'}));
     });
   });
 }

@@ -3,8 +3,8 @@ import 'dart:isolate';
 import 'package:fomet_api_client/src/clients/fomet_base_client.dart';
 import 'package:fomet_api_client/src/configuration.dart';
 import 'package:fomet_api_client/src/parsers/products/products_parser.dart';
-import 'package:http/http.dart' as http;
 
+/// Fetches the list of all products in the Fomet catalog.
 base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
   /// {@macro fomet_api_client.clients.language_code}
   final String languageCode;
@@ -12,11 +12,12 @@ base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
   /// Creates a [FometProductsClient] client.
   const FometProductsClient({
     required this.languageCode,
+    super.client,
   }) : super(endpoint: productsEndpoint);
 
   @override
   Future<List<FometProduct>> execute() async {
-    final uri = buildEndpointUri(
+    final response = await fometGetRequest(
       queryParameters: {
         'mCodCategoria': '',
         'mCodVarieta': '',
@@ -25,8 +26,11 @@ base class FometProductsClient extends FometBaseClient<List<FometProduct>> {
       },
     );
 
-    final response = await http.get(uri, headers: headers);
-
+    /*
+     * The parser should run in a separate isolate because the full products
+     * list is very big and we have noticed that parsing takes more than a few
+     * milliseconds to execute (on average).
+     */
     return Isolate.run<List<FometProduct>>(() {
       final parser = FometProductsParser(xmlContent: response.body);
       return parser.parse();

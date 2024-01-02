@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_api_client/src/configuration.dart';
 import 'package:http/http.dart';
@@ -7,27 +5,32 @@ import 'package:http/testing.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('FometProductImageClient', () {
+  group('FometCodeValidationClient', () {
     test('Smoke test', () {
-      const client = FometProductImageClient(productCode: 'abc');
+      const client = FometCodeValidationClient(
+        productCode: 'abc',
+      );
 
       expect(client.productCode, equals('abc'));
-      expect(client.endpoint, equals(productImageEndpoint));
+      expect(client.endpoint, equals(codeValidationEndpoint));
       expect(client.client, isNull);
     });
 
     test('Request test', () async {
-      final image = await File('test/utils/product_image.png').readAsBytes();
       final client = MockClient((request) async {
-        return Response.bytes(image, 200);
+        return Response(_mockResponse, 200);
       });
 
-      final response = await FometProductImageClient(
+      final response = await FometCodeValidationClient(
         productCode: 'abc',
         client: client,
       ).execute();
 
-      expect(response, equals(image));
+      expect(response, isTrue);
     });
   });
 }
+
+const _mockResponse = '''
+<string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</string>
+''';
