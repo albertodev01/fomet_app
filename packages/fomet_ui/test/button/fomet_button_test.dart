@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 import '../mock_wrapper.dart';
+import '../test_utils.dart';
 
 void main() {
   group('FometButton', () {
@@ -46,7 +47,7 @@ void main() {
 
     group('Golden tests', () {
       testWidgets('FometButton', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(300, 100));
+        await setSurfaceSize(tester: tester, size: const Size(300, 100));
 
         await tester.pumpWidget(
           MockWrapper(
@@ -75,7 +76,7 @@ void main() {
       });
 
       testWidgets('FometButton with icon', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(400, 100));
+        await setSurfaceSize(tester: tester, size: const Size(400, 100));
 
         await tester.pumpWidget(
           MockWrapper(

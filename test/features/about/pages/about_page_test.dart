@@ -1,0 +1,66 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fomet_app/src/features/about/pages/about_page.dart';
+import 'package:fomet_app/src/features/about/widgets/social_links.dart';
+import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
+import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
+
+import '../../../mock_wrapper.dart';
+
+void main() {
+  group('AboutPage', () {
+    group('Widget tests', () {
+      testWidgets('Smoke test', (tester) async {
+        await tester.pumpWidget(
+          const MockWrapper(
+            child: AboutPage(),
+          ),
+        );
+
+        expect(find.byType(AboutPage), findsOneWidget);
+        expect(find.byType(ShellPageWrapper), findsOneWidget);
+
+        // Images
+        expect(find.byType(BannerLogoSvg), findsOneWidget);
+        expect(find.byType(TractorSvg), findsOneWidget);
+        expect(find.byType(FactorySvg), findsOneWidget);
+        expect(find.byType(MagnifyingGlassSvg), findsOneWidget);
+
+        await tester.scrollUntilVisible(find.byType(SocialLinks), 200);
+        expect(find.byType(SocialLinks), findsOneWidget);
+      });
+    });
+
+    group('Golden tests', () {
+      testWidgets('AboutPage', (tester) async {
+        await tester.pumpWidget(
+          const MockWrapper(
+            child: AboutPage(),
+          ),
+        );
+
+        await expectLater(
+          find.byType(MockWrapper),
+          matchesGoldenFile('goldens/about_page.png'),
+        );
+      });
+
+      testWidgets('AboutPage - social links', (tester) async {
+        await tester.pumpWidget(
+          const MockWrapper(
+            child: AboutPage(),
+          ),
+        );
+
+        await tester.scrollUntilVisible(
+          find.byType(SocialLinks),
+          200,
+        );
+
+        await expectLater(
+          find.byType(MockWrapper),
+          matchesGoldenFile('goldens/about_page_social_links.png'),
+        );
+      });
+    });
+  });
+}

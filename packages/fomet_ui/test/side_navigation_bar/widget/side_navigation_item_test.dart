@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fomet_ui/src/side_navigation_bar/widget/side_navigation_item.dart';
 
 import '../../mock_wrapper.dart';
+import '../../test_utils.dart';
 
 void main() {
   group('SideNavigationItem', () {
@@ -28,7 +29,7 @@ void main() {
 
     group('Golden test', () {
       testWidgets('SideNavigationItem - deselected', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(250, 100));
+        await setSurfaceSize(tester: tester, size: const Size(250, 100));
 
         await tester.pumpWidget(
           MockWrapper(
@@ -48,7 +49,7 @@ void main() {
       });
 
       testWidgets('SideNavigationItem - selected', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(250, 100));
+        await setSurfaceSize(tester: tester, size: const Size(250, 100));
 
         await tester.pumpWidget(
           MockWrapper(

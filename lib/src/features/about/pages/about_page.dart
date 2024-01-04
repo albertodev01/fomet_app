@@ -6,7 +6,10 @@ import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
+/// The about page shows a series of [Text] widgets that briefly describe the
+/// history of the Fomet company.
 class AboutPage extends StatelessWidget {
+  /// Creates a [AboutPage] widget.
   const AboutPage({super.key});
 
   @override

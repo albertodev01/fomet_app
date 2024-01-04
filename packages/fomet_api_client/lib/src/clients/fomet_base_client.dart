@@ -14,7 +14,10 @@ abstract base class FometBaseClient<T> {
   /// The endpoint at which the HTTP request is made.
   final String endpoint;
 
-  /// An [http.Client].
+  /// This client could be used to keep a long-lived connection or in unit tests
+  /// for mocking requests.
+  ///
+  /// By default, this is set to `null` and a default client is used.
   final http.Client? client;
 
   /// Creates a [FometBaseClient] object.
@@ -40,7 +43,8 @@ abstract base class FometBaseClient<T> {
     if (client != null) {
       return client!.get(uri, headers: headers);
     } else {
-      return http.get(uri, headers: headers);
+      // This is ignored because it will be tested by integration and QA tests.
+      return http.get(uri, headers: headers); // coverage:ignore-line
     }
   }
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+/// Lays [children] at the center of the screen and scrolls when needed.
 class CenteredScrollableContent extends StatelessWidget {
-  final bool hasScrollBody;
+  /// The children that are displayed at the center of the screen.
   final List<Widget> children;
+
+  /// Creates a [CenteredScrollableContent] widget.
   const CenteredScrollableContent({
     required this.children,
-    this.hasScrollBody = false,
     super.key,
   });
 
@@ -18,7 +20,7 @@ class CenteredScrollableContent extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverFillRemaining(
-          hasScrollBody: hasScrollBody,
+          hasScrollBody: false,
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,

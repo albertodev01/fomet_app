@@ -12,6 +12,7 @@ migrate_working_dir/
 .fvm/flutter_sdk
 **/.DS_Store
 **/failures/*.png
+coverage/
 
 # IntelliJ related
 *.iml

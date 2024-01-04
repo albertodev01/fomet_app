@@ -23,6 +23,7 @@ class FometPageScaffold extends StatefulWidget {
 }
 
 class _FometPageScaffoldState extends State<FometPageScaffold> {
+  /// Children of the navigation bar.
   late final items = [
     (iconData: Icons.home, text: context.l10n.home),
     (iconData: Icons.energy_savings_leaf, text: context.l10n.products),
@@ -30,6 +31,7 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
     (iconData: Icons.info_outlined, text: context.l10n.about),
   ];
 
+  /// The index of the currently selected item.
   final selectedIndex = ValueNotifier<int>(0);
 
   /// Caches a [FometBottomNavigationBar] widget so that its state is not lost
@@ -61,16 +63,14 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
   );
 
   /// Navigates to a certain destionation based on [index].
-  void mapIndexToPath(int index) {
-    final path = switch (index) {
-      0 => homePagePath,
-      1 => productsPagePath,
-      2 => faqPagePath,
-      _ => aboutPagePath,
-    };
-
-    context.go(path);
-  }
+  void mapIndexToPath(int index) => context.go(
+        switch (index) {
+          0 => homePagePath,
+          1 => productsPagePath,
+          2 => faqPagePath,
+          _ => aboutPagePath,
+        },
+      );
 
   @override
   void didUpdateWidget(covariant FometPageScaffold oldWidget) {

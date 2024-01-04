@@ -6,7 +6,10 @@ environment:
   sdk: ^3.2.3
 
 dependencies:
+  # Used for making HTTP requests.
   http: ^1.1.2
+
+  # User for parsing XML strings.
   xml: ^6.5.0
 
 dev_dependencies:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
+import 'package:fomet_app/src/utils/widgets/centered_scrollable_content.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
@@ -17,22 +18,25 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const LogoSvg(),
-              const SizedBox(height: 20),
-              const _NotFoundText(),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () => context.go(homePagePath),
-                child: const Text('Back to home'),
-              ),
-            ],
+      body: CenteredScrollableContent(
+        children: [
+          const LogoSvg(
+            height: FometDimensions.large,
+            width: FometDimensions.large,
           ),
-        ),
+          const SizedBox(height: 20),
+          const _NotFoundText(),
+          const SizedBox(height: 40),
+          FometButton(
+            onTap: () => context.go(homePagePath),
+            leadingIcon: const Icon(
+              Icons.home,
+              color: FometColors.primary,
+              size: FometDimensions.space3x,
+            ),
+            text: context.l10n.home,
+          ),
+        ],
       ),
     );
   }
@@ -45,7 +49,9 @@ class _NotFoundText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       context.l10n.pageNotFoundText,
-      style: FometTypography.medium,
+      style: FometTypography.regular.copyWith(
+        fontSize: 16,
+      ),
     );
   }
 }

@@ -10,12 +10,14 @@ jobs:
     name: Flutter web deployment
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
+        id: fvm-config-action
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.16.4'
-          channel: 'stable'
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
       - name: Installing dependencies
         run: flutter pub get

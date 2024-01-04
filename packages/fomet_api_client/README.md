@@ -1,47 +1,26 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# fomet_api_client
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+The `fomet_api_client` package exports a series of HTTP clients that communicate with the Fomet web service to retrieve products information. All URIs and endpoints can be found in the `src/configurations.dart` file. There are two folders in `src/`:
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+  1. `clients/`: contains all HTTP clients that are exported outside of the package. 
+  2. `parsers/`: contains all XML parsers that are internally used by HTTP clients. Classes within this folder are **not** exported outside of the package.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+The `FometBaseClient` base class is the supertype of all clients and defines the `fometGetRequest` method. It should **always** be used to make HTTP calls inside `execute` (or other helper methods) because it configures all headers and query parameters automatically. For example:
 
 ```dart
-const like = 'sample';
+// GOOD
+Future<String> execute() async {
+  final response = await fometGetRequest(
+    queryParameters: {'a': 'b'},
+  );
+  return response.body;
+}
+
+// BAD
+Future<String> execute() async {
+  final response = await http.get(...);
+  return response.body;
+}
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
-
-
-TODO: add these to the backend
-
-"Access-Control-Allow-Origin": "*", // Required for CORS support to work
-  "Access-Control-Allow-Credentials": true, // Required for cookies, authorization headers with HTTPS
-  "Access-Control-Allow-Headers": "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
-  "Access-Control-Allow-Methods": "POST, OPTIONS"
+The usage `fometGetRequest` favors maintainability and avoids code duplication.

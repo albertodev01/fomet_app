@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fomet_app/src/features/about/pages/about_page.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// A series of tappable images that open social media accounts on the default
+/// web browser. Used in [AboutPage].
 class SocialLinks extends StatelessWidget {
+  /// Creates a [SocialLinks] widget.
   const SocialLinks({super.key});
 
   Future<void> _launchUrl({required String url}) async {
     final uri = Uri.tryParse(url);
 
-    if (uri != null && await canLaunchUrl(uri)) {
+    if (uri != null) {
       await launchUrl(uri);
     }
   }

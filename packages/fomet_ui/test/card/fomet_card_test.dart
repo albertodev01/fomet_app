@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 import '../mock_wrapper.dart';
+import '../test_utils.dart';
 
 void main() {
   group('FometCard', () {
@@ -47,7 +48,7 @@ void main() {
 
     group('Golden tests', () {
       testWidgets('Card', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(300, 150));
+        await setSurfaceSize(tester: tester, size: const Size(300, 150));
 
         await tester.pumpWidget(
           MockWrapper(
@@ -76,7 +77,7 @@ void main() {
       });
 
       testWidgets('Card -  secondary content', (tester) async {
-        await tester.binding.setSurfaceSize(const Size(300, 200));
+        await setSurfaceSize(tester: tester, size: const Size(300, 200));
 
         await tester.pumpWidget(
           MockWrapper(
