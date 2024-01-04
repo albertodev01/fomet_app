@@ -7,16 +7,47 @@ on:
       - develop
 
 jobs:
-  verify_flutter_project:
+  verify_packages:
     strategy:
       matrix:
         folder:
           [
-            ".",
             "packages/fomet_api_client",
             "packages/fomet_ui",
           ]
       fail-fast: true
+    name: FometApp packages action
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
+        id: fvm-config-action
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Installing dependencies
+        run: flutter pub get
+
+      - name: Making sure the package is formatted
+        run: dart format --set-exit-if-changed lib test
+
+      - name: Making sure that there are no analysis warnings or errors
+        run: flutter analyze --fatal-infos --fatal-warnings lib test
+
+      - name: Runing tests
+        run: flutter test --coverage
+
+      - name: Making sure that code coverage is 100
+        uses: VeryGoodOpenSource/very_good_coverage@v2
+        with:
+          min_coverage: 100
+
+  verify_flutter_application:
+    needs: [verify_packages]
     name: FometApp action
     runs-on: macos-latest
     
@@ -42,8 +73,7 @@ jobs:
       - name: Runing tests
         run: flutter test --coverage
 
-      - name: Making sure that code coverage is at least 90
+      - name: Making sure that code coverage is at least 95
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           min_coverage: 30
-          
