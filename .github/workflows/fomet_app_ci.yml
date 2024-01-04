@@ -7,9 +7,19 @@ on:
       - develop
 
 jobs:
-  verify_flutter_application:
+  verify_flutter_project:
+    strategy:
+      matrix:
+        folder:
+          [
+            ".",
+            "packages/fomet_api_client",
+            "packages/fomet_ui",
+          ]
+      fail-fast: true
     name: FometApp action
     runs-on: macos-latest
+    
     steps:
       - uses: actions/checkout@v4
 
