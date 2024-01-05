@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
+import 'package:fomet_app/src/utils/constants.dart';
+import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_app/src/utils/widgets/version_code_checker.dart';
 import 'package:fomet_ui/fomet_ui.dart';
@@ -31,6 +34,12 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
     (iconData: Icons.info_outlined, text: context.l10n.about),
   ];
 
+  /// Checks whether the application is updated or not.
+  late final isUpdated = FometAppVersionClient(
+    currentVersionCode: serviceInternalCode,
+    client: context.mockClient,
+  ).execute();
+
   /// The index of the currently selected item.
   final selectedIndex = ValueNotifier<int>(0);
 
@@ -44,7 +53,9 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
       height: 24,
     ),
     selectedIndex: selectedIndex,
-    topTrailingIcon: const VersionCodeChecker(),
+    topTrailingIcon: VersionCodeChecker(
+      isUpdated: isUpdated,
+    ),
     child: widget.child,
   );
 
@@ -58,7 +69,9 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
       height: 64,
     ),
     selectedIndex: selectedIndex,
-    sidebarTrailingIcon: const VersionCodeChecker(),
+    sidebarTrailingIcon: VersionCodeChecker(
+      isUpdated: isUpdated,
+    ),
     child: widget.child,
   );
 
@@ -85,7 +98,9 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
           width: 64,
           height: 64,
         ),
-        sidebarTrailingIcon: const VersionCodeChecker(),
+        sidebarTrailingIcon: VersionCodeChecker(
+          isUpdated: isUpdated,
+        ),
         child: widget.child,
       );
       bottomNavigationBar = FometBottomNavigationBar(
@@ -96,7 +111,9 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
           width: 24,
           height: 24,
         ),
-        topTrailingIcon: const VersionCodeChecker(),
+        topTrailingIcon: VersionCodeChecker(
+          isUpdated: isUpdated,
+        ),
         child: widget.child,
       );
     }

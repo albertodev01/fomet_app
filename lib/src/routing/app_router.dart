@@ -13,6 +13,7 @@ import 'package:fomet_app/src/features/products/pages/products_page.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/error_page.dart';
 import 'package:fomet_app/src/utils/widgets/page_scaffold.dart';
+import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -31,12 +32,12 @@ final appRouter = GoRouter(
         GoRoute(
           path: homePagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => const HomePage(),
+          builder: (_, __) => const ShellPageWrapper(child: HomePage()),
         ),
         GoRoute(
           path: productsPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => const ProductsPage(),
+          builder: (_, __) => const ShellPageWrapper(child: ProductsPage()),
           routes: [
             GoRoute(
               path: productDetailsPath,
@@ -48,25 +49,25 @@ final appRouter = GoRouter(
         GoRoute(
           path: faqPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => const FaqPage(),
+          builder: (_, __) => const ShellPageWrapper(child: FaqPage()),
         ),
         GoRoute(
           path: aboutPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => const AboutPage(),
+          builder: (_, __) => const ShellPageWrapper(child: AboutPage()),
         ),
         GoRoute(
           path: catalogPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
           builder: (_, __) => InheritedCatalogState(
             catalogState: CatalogPageState(),
-            child: const CatalogPage(),
+            child: const ShellPageWrapper(child: CatalogPage()),
           ),
         ),
         GoRoute(
           path: qrScanPath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => const QRScanPage(),
+          builder: (_, __) => const ShellPageWrapper(child: QRScanPage()),
         ),
       ],
     ),

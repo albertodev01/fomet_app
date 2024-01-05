@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_app/src/features/products/state/products_page_state.dart';
 import 'package:fomet_app/src/features/products/widgets/inherited_products_state.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/app_router.dart';
+import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 /// The application's main entrypoint.

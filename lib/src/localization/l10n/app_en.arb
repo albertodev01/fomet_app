@@ -43,5 +43,18 @@
   "variety": "Variety",
   "kind": "Kind",
   "qrCodeHint": "Wait for the camera to start and frame the QR code.",
-  "qrCodeError": "Invalid QR code. Try again!"
+  "qrCodeError": "Invalid QR code. Try again!",
+  "description": "Description",
+  "autumnFertilizer": "Autumn fertilizer",
+  "coverageFertilizer": "Coverage fertilizer",
+  "springFertilizer": "Spring fertilizer",
+  "irrigationFertilizer": "Irrigation fertilizer",
+  "preSowingFertilizer": "Pre-sowing fertilizer",
+  "rowFertilizer": "Row fertilizer",
+  "notes": "Notes",
+  "updates": "Updates",
+  "checkUpdateError": "Couldn't connect to the server to check for updates.",
+  "checkUpdateSuccess": "Perfect, the application is updated!",
+  "checkUpdateWarning": "Go to the store and update the application!",
+  "ok": "OK"
 }

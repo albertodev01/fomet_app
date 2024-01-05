@@ -106,6 +106,52 @@ void main() {
           matchesGoldenFile('goldens/fomet_card_secondary.png'),
         );
       });
+
+      testWidgets('Card -  centere items', (tester) async {
+        await setSurfaceSize(tester: tester, size: const Size(300, 400));
+
+        await tester.pumpWidget(
+          MockWrapper(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FometCard(
+                  content: const Text('primary'),
+                  onTap: () {},
+                  centerContents: true,
+                ),
+                const SizedBox(height: 8),
+                FometCard(
+                  content: const Text('primary'),
+                  trailingIcon: const Text('a'),
+                  onTap: () {},
+                  centerContents: true,
+                ),
+                const SizedBox(height: 8),
+                FometCard(
+                  content: const Text('primary'),
+                  secondaryContent: const Text('secondary'),
+                  onTap: () {},
+                  centerContents: true,
+                ),
+                const SizedBox(height: 8),
+                FometCard(
+                  content: const Text('primary'),
+                  trailingIcon: const Text('a'),
+                  secondaryContent: const Text('secondary'),
+                  onTap: () {},
+                  centerContents: true,
+                ),
+              ],
+            ),
+          ),
+        );
+
+        await expectLater(
+          find.byType(Column).first,
+          matchesGoldenFile('goldens/fomet_card_centered.png'),
+        );
+      });
     });
   });
 }

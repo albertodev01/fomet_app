@@ -43,5 +43,18 @@
   "variety": "Varietà",
   "kind": "Tipo",
   "qrCodeHint": "Attendi l'avvio della fotocamera e inquadra il codice QR.",
-  "qrCodeError": "Codice QR non valido. Riprova!"
+  "qrCodeError": "Codice QR non valido. Riprova!",
+  "description": "Descrizione",
+  "autumnFertilizer": "FertAutunnale",
+  "springFertilizer": "FertPrimaverile",
+  "coverageFertilizer": "FertCopertura",
+  "irrigationFertilizer": "FertIrrigazione",
+  "preSowingFertilizer": "FertPresemina",
+  "rowFertilizer": "FertSuFila",
+  "notes": "Note",
+  "updates": "Aggiornamenti",
+  "checkUpdateError": "Non è stato possibile collegarsi al server per verificare se ci sono aggiornamenti.",
+  "checkUpdateSuccess": "Perfetto, l'applicazione è aggiornata!",
+  "checkUpdateWarning": "Vai nello store e aggiorna l'applicazione!",
+  "ok": "OK"
 }

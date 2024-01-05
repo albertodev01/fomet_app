@@ -22,14 +22,20 @@ class FometCard extends StatelessWidget {
   /// {@template fometui.card.onTap}
   /// Called when the widget is tapped or otherwise activated.
   /// {@endtemplate}
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+
+  /// Whether centring [content] and [secondaryContent].
+  ///
+  /// By default, this is set to `false`.
+  final bool centerContents;
 
   /// Creates a [FometCard] widget.
   const FometCard({
     required this.content,
-    required this.onTap,
+    this.onTap,
     this.trailingIcon,
     this.secondaryContent,
+    this.centerContents = false,
     super.key,
   });
 
@@ -62,11 +68,20 @@ class FometCard extends StatelessWidget {
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: centerContents
+                ? CrossAxisAlignment.center
+                : CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  Expanded(child: content),
+                  Expanded(
+                    child: Align(
+                      alignment: centerContents
+                          ? Alignment.center
+                          : Alignment.centerLeft,
+                      child: content,
+                    ),
+                  ),
                   trailing,
                 ],
               ),

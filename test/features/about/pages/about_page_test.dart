@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fomet_app/src/features/about/pages/about_page.dart';
 import 'package:fomet_app/src/features/about/widgets/social_links.dart';
-import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 
 import '../../../mock_wrapper.dart';
@@ -17,7 +16,6 @@ void main() {
         );
 
         expect(find.byType(AboutPage), findsOneWidget);
-        expect(find.byType(ShellPageWrapper), findsOneWidget);
 
         // Images
         expect(find.byType(BannerLogoSvg), findsOneWidget);

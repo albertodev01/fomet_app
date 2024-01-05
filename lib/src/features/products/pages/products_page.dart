@@ -5,7 +5,6 @@ import 'package:fomet_app/src/features/products/widgets/inherited_products_state
 import 'package:fomet_app/src/features/products/widgets/products_result.dart';
 import 'package:fomet_app/src/utils/extensions.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
-import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -22,18 +21,14 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   Widget build(BuildContext context) {
     if (context.productsPageState.products.isNotEmpty) {
-      return ShellPageWrapper(
-        child: ProductsResult(
-          products: context.productsPageState.products,
-        ),
+      return ProductsResult(
+        products: context.productsPageState.products,
       );
     }
 
-    return ShellPageWrapper(
-      child: FometFutureBuilder<List<FometProduct>>(
-        future: future,
-        onSuccess: (data) => ProductsResult(products: data),
-      ),
+    return FometFutureBuilder<List<FometProduct>>(
+      future: future,
+      onSuccess: (data) => ProductsResult(products: data),
     );
   }
 }

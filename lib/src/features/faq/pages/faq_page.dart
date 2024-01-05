@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:fomet_app/src/features/faq/widgets/faq_separator.dart';
 import 'package:fomet_app/src/features/faq/widgets/question_answer.dart';
 import 'package:fomet_app/src/localization/localization.dart';
-import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 
 class FaqPage extends StatefulWidget {
   const FaqPage({super.key});
@@ -25,21 +24,19 @@ class _FaqPageState extends State<FaqPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ShellPageWrapper(
-      child: ListView.separated(
-        itemCount: questionsAndAnswers.length,
-        itemBuilder: (_, index) {
-          final item = questionsAndAnswers[index];
+    return ListView.separated(
+      itemCount: questionsAndAnswers.length,
+      itemBuilder: (_, index) {
+        final item = questionsAndAnswers[index];
 
-          return QuestionAnswer(
-            question: item.question,
-            answer: item.answer,
-            topElement: index == 0,
-            bottomElement: index == questionsAndAnswers.length - 1,
-          );
-        },
-        separatorBuilder: (_, __) => const FaqSeparator(),
-      ),
+        return QuestionAnswer(
+          question: item.question,
+          answer: item.answer,
+          topElement: index == 0,
+          bottomElement: index == questionsAndAnswers.length - 1,
+        );
+      },
+      separatorBuilder: (_, __) => const FaqSeparator(),
     );
   }
 }

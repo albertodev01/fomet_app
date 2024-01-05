@@ -6,7 +6,6 @@ import 'package:fomet_app/src/features/home/widgets/catalog/views/kind_view.dart
 import 'package:fomet_app/src/features/home/widgets/catalog/views/products_details_view.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/views/products_view.dart';
 import 'package:fomet_app/src/features/home/widgets/catalog/views/variety_view.dart';
-import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 
 class CatalogPage extends StatefulWidget {
   const CatalogPage({super.key});
@@ -33,30 +32,28 @@ class _CatalogPageState extends State<CatalogPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ShellPageWrapper(
-      child: Column(
-        children: [
-          // Contents
-          Expanded(
-            child: PageView(
-              controller: controller,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                CategoryView(controller: controller),
-                VarietyView(controller: controller),
-                KindView(controller: controller),
-                ProductsView(controller: controller),
-                ProductsDetailsView(controller: controller),
-              ],
-            ),
+    return Column(
+      children: [
+        // Contents
+        Expanded(
+          child: PageView(
+            controller: controller,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              CategoryView(controller: controller),
+              VarietyView(controller: controller),
+              KindView(controller: controller),
+              ProductsView(controller: controller),
+              ProductsDetailsView(controller: controller),
+            ],
           ),
+        ),
 
-          const Divider(),
+        const Divider(),
 
-          // Progress indicator
-          const CatalogProgress(),
-        ],
-      ),
+        // Progress indicator
+        const CatalogProgress(),
+      ],
     );
   }
 }
