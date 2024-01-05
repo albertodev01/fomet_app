@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fomet_app/src/features/faq/widgets/faq_separator.dart';
 import 'package:fomet_app/src/features/faq/widgets/question_answer.dart';
 import 'package:fomet_app/src/localization/localization.dart';
+import 'package:fomet_app/src/utils/widgets/logo_separator.dart';
 
 class FaqPage extends StatefulWidget {
   const FaqPage({super.key});
@@ -36,7 +36,7 @@ class _FaqPageState extends State<FaqPage> {
           bottomElement: index == questionsAndAnswers.length - 1,
         );
       },
-      separatorBuilder: (_, __) => const FaqSeparator(),
+      separatorBuilder: (_, __) => const LogoSeparator(),
     );
   }
 }

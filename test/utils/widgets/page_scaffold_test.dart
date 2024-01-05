@@ -110,6 +110,7 @@ void main() {
           ),
         );
 
+        await tester.pumpAndSettle();
         expect(find.byType(FometSideNavigationBar), findsOneWidget);
 
         await expectLater(
@@ -127,6 +128,7 @@ void main() {
           ),
         );
 
+        await tester.pumpAndSettle();
         expect(find.byType(FometBottomNavigationBar), findsOneWidget);
 
         await expectLater(
