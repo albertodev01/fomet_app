@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
+import 'package:fomet_app/src/features/products/state/products_page_state.dart';
 
 /// An [InheritedWidget] that exposes a [T] object.
 class InheritedObject<T> extends InheritedWidget {
@@ -43,4 +44,12 @@ extension InheritedObjectClientExt on BuildContext {
   /// Uses [InheritedObject] to retrieve a [FometMockClient] object.
   FometMockClient? get mockClient =>
       InheritedObject.maybeOf<FometMockClient>(this)?.object;
+}
+
+/// Extension method on [BuildContext] that allows getting a reference to the
+///[ProductsPageState] up in the tree using [InheritedObject].
+extension InheritedProductsStateExt on BuildContext {
+  /// Uses [InheritedObject] to retrieve a [ProductsPageState] object.
+  ProductsPageState get productsPageState =>
+      InheritedObject.of<ProductsPageState>(this).object;
 }

@@ -65,5 +65,5 @@ const italianStrings = {
   'variety': 'Varietà',
   'kind': 'Tipo',
   'qrCodeHint': "Attendi l'avvio della fotocamera e inquadra il codice QR.",
-  'qrCodeError': 'Codice QR non valido. Riprova!'
+  'qrCodeError': 'Codice QR non valido. Riprova!',
 };

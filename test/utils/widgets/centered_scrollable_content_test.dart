@@ -67,7 +67,6 @@ class _GoldenContainer extends StatelessWidget {
   final List<Widget> children;
   const _GoldenContainer({
     required this.children,
-    super.key,
   });
 
   @override

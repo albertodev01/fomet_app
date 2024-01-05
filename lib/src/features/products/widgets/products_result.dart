@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
-import 'package:fomet_app/src/features/products/widgets/inherited_products_state.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
+import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
 
