@@ -11,7 +11,7 @@ void main() {
   group('FaqPage', () {
     group('Widget tests', () {
       testWidgets('Smoke test', (tester) async {
-        await setSurfaceSize(tester: tester, size: const Size(800, 1900));
+        await setSurfaceSize(tester: tester, size: const Size(800, 2500));
 
         await tester.pumpWidget(
           const MockWrapper(
@@ -30,7 +30,7 @@ void main() {
 
     group('Golden tests', () {
       testWidgets('FaqPage', (tester) async {
-        await setSurfaceSize(tester: tester, size: const Size(800, 1900));
+        await setSurfaceSize(tester: tester, size: const Size(800, 2600));
 
         await tester.pumpWidget(
           const MockWrapper(
