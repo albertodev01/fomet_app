@@ -30,21 +30,26 @@ jobs:
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 
       - name: Installing dependencies
+        working-directory: ${{ matrix.folder }}
         run: flutter pub get
 
       - name: Making sure the package is formatted
+        working-directory: ${{ matrix.folder }}
         run: dart format --set-exit-if-changed lib test
 
       - name: Making sure that there are no analysis warnings or errors
+        working-directory: ${{ matrix.folder }}
         run: flutter analyze --fatal-infos --fatal-warnings lib test
 
       - name: Runing tests
+        working-directory: ${{ matrix.folder }}
         run: flutter test --coverage
 
       - name: Making sure that code coverage is 100
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           min_coverage: 100
+          path: ${{ matrix.folder }}/coverage/lcov.info
 
   verify_flutter_application:
     needs: [verify_packages]
@@ -73,7 +78,7 @@ jobs:
       - name: Runing tests
         run: flutter test --coverage
 
-      - name: Making sure that code coverage is at least 95
+      - name: Making sure that code coverage is at least 85
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
-          min_coverage: 60
+          min_coverage: 85
