@@ -4,7 +4,10 @@ import 'package:fomet_app/src/features/faq/widgets/question_answer.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/utils/widgets/logo_separator.dart';
 
+/// This page contains a series of questions and answers separated by a colored
+/// divider line.
 class FaqPage extends StatefulWidget {
+  /// Creates a [FaqPage] widget.
   const FaqPage({super.key});
 
   @override

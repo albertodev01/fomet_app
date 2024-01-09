@@ -7,11 +7,11 @@ import 'package:fomet_app/src/features/home/pages/catalog_page.dart';
 import 'package:fomet_app/src/features/home/pages/home_page.dart';
 import 'package:fomet_app/src/features/home/pages/qr_scan_page.dart';
 import 'package:fomet_app/src/features/home/state/catalog_page_state.dart';
-import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
 import 'package:fomet_app/src/features/products/pages/product_details_page.dart';
 import 'package:fomet_app/src/features/products/pages/products_page.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/error_page.dart';
+import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_app/src/utils/widgets/page_scaffold.dart';
 import 'package:fomet_app/src/utils/widgets/shell_page_wrapper.dart';
 import 'package:go_router/go_router.dart';
@@ -59,8 +59,8 @@ final appRouter = GoRouter(
         GoRoute(
           path: catalogPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => InheritedCatalogState(
-            catalogState: CatalogPageState(),
+          builder: (_, __) => InheritedObject<CatalogPageState>(
+            object: CatalogPageState(),
             child: const ShellPageWrapper(child: CatalogPage()),
           ),
         ),

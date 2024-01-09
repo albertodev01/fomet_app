@@ -61,7 +61,31 @@ void main() {
     );
 
     testWidgets(
-      "'maybeOf' does not throw when inherited widget is up in the tree",
+      "'maybeOf' returns the value when the inherited widget is up in the tree",
+      (tester) async {
+        var value = true;
+
+        await tester.pumpWidget(
+          MockWrapper(
+            child: InheritedObject<bool>(
+              object: true,
+              child: Builder(
+                builder: (context) {
+                  value = InheritedObject.maybeOf<bool>(context)!.object;
+
+                  return const SizedBox.shrink();
+                },
+              ),
+            ),
+          ),
+        );
+
+        expect(value, isTrue);
+      },
+    );
+
+    testWidgets(
+      "'maybeOf' returns null when inherited widget is NOT up in the tree",
       (tester) async {
         bool? value = true;
 

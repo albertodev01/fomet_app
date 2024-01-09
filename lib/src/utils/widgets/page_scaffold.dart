@@ -3,7 +3,6 @@ import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/constants.dart';
-import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_app/src/utils/widgets/svg_asset_widgets.dart';
 import 'package:fomet_app/src/utils/widgets/version_code_checker.dart';
 import 'package:fomet_ui/fomet_ui.dart';
@@ -15,9 +14,18 @@ class FometPageScaffold extends StatefulWidget {
   /// The page content.
   final Widget child;
 
+  /// {@template fomet_app.pages.mockClient}
+  /// A mock implementation of an HTTP client that allows overriding the default
+  /// behavior of a client. This is often useful in tests.
+  ///
+  /// By default, this is set to `null`.
+  /// {@endtemplate}
+  final FometMockClient? mockClient;
+
   /// Creates a [FometPageScaffold] widget.
   const FometPageScaffold({
     required this.child,
+    this.mockClient,
     super.key,
   });
 
@@ -37,7 +45,7 @@ class _FometPageScaffoldState extends State<FometPageScaffold> {
   /// Checks whether the application is updated or not.
   late final isUpdated = FometAppVersionClient(
     currentVersionCode: serviceInternalCode,
-    client: context.mockClient,
+    client: widget.mockClient,
   ).execute();
 
   /// The index of the currently selected item.

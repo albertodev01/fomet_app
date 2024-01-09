@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:fomet_app/src/utils/widgets/version_code_checker.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
@@ -10,3 +11,11 @@ const versionCheckerIconSize = FometDimensions.space3x;
 
 /// The icon size used by the adaptive dialog in [VersionCodeChecker].
 const versionCheckerDialogIconSize = FometDimensions.space6x;
+
+/// A [Set] of [TargetPlatform] values that indicates which platform support
+/// scanning QR codes.
+const qrScanSupportedPlatforms = {
+  TargetPlatform.android,
+  TargetPlatform.iOS,
+  TargetPlatform.macOS,
+};

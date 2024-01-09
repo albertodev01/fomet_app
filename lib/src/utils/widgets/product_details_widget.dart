@@ -6,7 +6,6 @@ import 'package:fomet_app/src/features/home/widgets/catalog/views/products_detai
 import 'package:fomet_app/src/features/products/pages/product_details_page.dart';
 import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
-import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_app/src/utils/widgets/logo_separator.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
@@ -19,10 +18,14 @@ class ProductDetailsWidget extends StatefulWidget {
   /// The product code.
   final String productCode;
 
+  /// {@macro fomet_app.pages.mockClient}
+  final FometMockClient? mockClient;
+
   /// Creates a [ProductDetailsWidget] widget.
   const ProductDetailsWidget({
     required this.productInfo,
     required this.productCode,
+    this.mockClient,
     super.key,
   });
 
@@ -34,7 +37,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
   // Loads the product image from the Fomet server.
   late final imageFuture = FometProductImageClient(
     productCode: widget.productCode,
-    client: context.mockClient,
+    client: widget.mockClient,
   ).execute();
 
   @override

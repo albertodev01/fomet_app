@@ -29,6 +29,11 @@ class FometCard extends StatelessWidget {
   /// By default, this is set to `false`.
   final bool centerContents;
 
+  /// Optional padding around the card.
+  ///
+  /// By default, this is set to [EdgeInsets.zero].
+  final EdgeInsets padding;
+
   /// Creates a [FometCard] widget.
   const FometCard({
     required this.content,
@@ -36,6 +41,7 @@ class FometCard extends StatelessWidget {
     this.trailingIcon,
     this.secondaryContent,
     this.centerContents = false,
+    this.padding = EdgeInsets.zero,
     super.key,
   });
 
@@ -56,42 +62,45 @@ class FometCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: Card(
-        elevation: FometCardTokens.elevation,
-        shadowColor: FometColors.primary,
-        color: FometCardTokens.backgroundColor,
-        surfaceTintColor: FometCardTokens.backgroundColor,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: FometDimensions.space2x,
-            vertical: FometDimensions.space1x,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: centerContents
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Align(
-                      alignment: centerContents
-                          ? Alignment.center
-                          : Alignment.centerLeft,
-                      child: content,
+      child: Padding(
+        padding: padding,
+        child: Card(
+          elevation: FometCardTokens.elevation,
+          shadowColor: FometColors.primary,
+          color: FometCardTokens.backgroundColor,
+          surfaceTintColor: FometCardTokens.backgroundColor,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: FometDimensions.space2x,
+              vertical: FometDimensions.space1x,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: centerContents
+                  ? CrossAxisAlignment.center
+                  : CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: centerContents
+                            ? Alignment.center
+                            : Alignment.centerLeft,
+                        child: content,
+                      ),
                     ),
-                  ),
-                  trailing,
-                ],
-              ),
-              if (secondaryContent != null) ...[
-                const SizedBox(
-                  height: FometDimensions.space1x,
+                    trailing,
+                  ],
                 ),
-                secondaryContent!,
+                if (secondaryContent != null) ...[
+                  const SizedBox(
+                    height: FometDimensions.space1x,
+                  ),
+                  secondaryContent!,
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

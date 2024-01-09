@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:fomet_app/src/features/home/widgets/catalog/inherited_catalog_state.dart';
+import 'package:fomet_app/src/features/home/pages/catalog_page.dart';
 import 'package:fomet_app/src/localization/localization.dart';
+import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
+/// Used at the bottom of [CatalogPage] to let the user know which items have
+/// been selected through the various steps.
 class CatalogProgress extends StatelessWidget {
+  /// Creates a [CatalogProgress] widget.
   const CatalogProgress({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Rebuilds the staps with the user selected items.
     final state = context.catalogState;
+
+    // Separates text with an icon.
+    const separator = Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 8,
+      ),
+      child: Icon(
+        Icons.chevron_right_outlined,
+        color: FometColors.primary,
+        size: 14,
+      ),
+    );
 
     return SizedBox(
       height: 56,
@@ -22,30 +39,12 @@ class CatalogProgress extends StatelessWidget {
                   text: state.category.description,
                   placeholder: context.l10n.category,
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 8,
-                  ),
-                  child: Icon(
-                    Icons.chevron_right_outlined,
-                    color: FometColors.primary,
-                    size: 14,
-                  ),
-                ),
+                separator,
                 _ProgressEntry(
                   text: state.variety.description,
                   placeholder: context.l10n.variety,
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 8,
-                  ),
-                  child: Icon(
-                    Icons.chevron_right_outlined,
-                    color: FometColors.primary,
-                    size: 14,
-                  ),
-                ),
+                separator,
                 _ProgressEntry(
                   text: state.kind.description,
                   placeholder: context.l10n.kind,
@@ -59,9 +58,15 @@ class CatalogProgress extends StatelessWidget {
   }
 }
 
+/// Used by [CatalogProgress] for showing a progress entry.
 class _ProgressEntry extends StatelessWidget {
+  /// The text.
   final String text;
+
+  /// The placeholder that replaces [text] when epty.
   final String placeholder;
+
+  /// Creates a [_ProgressEntry] widget.
   const _ProgressEntry({
     required this.text,
     required this.placeholder,

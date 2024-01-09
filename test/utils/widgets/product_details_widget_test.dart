@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
-import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_app/src/utils/widgets/logo_separator.dart';
 import 'package:fomet_app/src/utils/widgets/product_details_widget.dart';
 import 'package:fomet_ui/fomet_ui.dart';
@@ -32,12 +31,12 @@ void main() {
         await setSurfaceSize(tester: tester, size: const Size(500, 900));
 
         await tester.pumpWidget(
-          InheritedObject<FometMockClient>(
-            object: FometMockClient.fromBytes(byteResponse: Uint8List(0)),
-            child: const MockWrapper(
-              child: ProductDetailsWidget(
-                productInfo: testProduct,
-                productCode: 'code',
+          MockWrapper(
+            child: ProductDetailsWidget(
+              productInfo: testProduct,
+              productCode: 'code',
+              mockClient: FometMockClient.fromBytes(
+                byteResponse: Uint8List.fromList(const [0]),
               ),
             ),
           ),
@@ -60,18 +59,24 @@ void main() {
     group('Golden tests', () {
       testWidgets('ProductDetailsWidget', (tester) async {
         await setSurfaceSize(tester: tester, size: const Size(500, 900));
+        final image = await loadImageAsset(
+          tester: tester,
+          imageName: 'product_image',
+        );
 
         await tester.pumpWidget(
-          InheritedObject<FometMockClient>(
-            object: FometMockClient.fromBytes(byteResponse: Uint8List(0)),
-            child: const MockWrapper(
-              child: ProductDetailsWidget(
-                productInfo: testProduct,
-                productCode: 'code',
+          MockWrapper(
+            child: ProductDetailsWidget(
+              productInfo: testProduct,
+              productCode: 'code',
+              mockClient: FometMockClient.fromBytes(
+                byteResponse: image,
               ),
             ),
           ),
         );
+
+        await tester.pumpAndSettle();
 
         await expectLater(
           find.byType(MockWrapper),
@@ -81,29 +86,35 @@ void main() {
 
       testWidgets('ProductDetailsWidget - no notes', (tester) async {
         await setSurfaceSize(tester: tester, size: const Size(500, 900));
+        final image = await loadImageAsset(
+          tester: tester,
+          imageName: 'product_image',
+        );
 
         await tester.pumpWidget(
-          InheritedObject<FometMockClient>(
-            object: FometMockClient.fromBytes(byteResponse: Uint8List(0)),
-            child: const MockWrapper(
-              child: ProductDetailsWidget(
-                productInfo: (
-                  description: 'description',
-                  coverageFertilizer: 'coverage',
-                  preSowingFertilizer: 'pre-sowing',
-                  irrigationFertilizer: 'irrigation',
-                  rowFertilizer: 'row',
-                  springFertilizer: 'spring',
-                  autumnFertilizer: 'autumn',
-                  notes: '',
-                  image: 'image.png',
-                  warning: 'none',
-                ),
-                productCode: 'code',
+          MockWrapper(
+            child: ProductDetailsWidget(
+              productInfo: (
+                description: 'description',
+                coverageFertilizer: 'coverage',
+                preSowingFertilizer: 'pre-sowing',
+                irrigationFertilizer: 'irrigation',
+                rowFertilizer: 'row',
+                springFertilizer: 'spring',
+                autumnFertilizer: 'autumn',
+                notes: '',
+                image: 'image.png',
+                warning: 'none',
+              ),
+              productCode: 'code',
+              mockClient: FometMockClient.fromBytes(
+                byteResponse: image,
               ),
             ),
           ),
         );
+
+        await tester.pumpAndSettle();
 
         await expectLater(
           find.byType(MockWrapper),

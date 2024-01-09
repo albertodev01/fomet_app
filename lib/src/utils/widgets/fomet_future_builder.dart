@@ -48,7 +48,9 @@ class FometFutureBuilder<T> extends StatelessWidget {
 
           // Default loading indicator
           return loadingWidget ??
-              const Center(child: CircularProgressIndicator());
+              const Center(
+                child: CircularProgressIndicator(),
+              );
         },
       ),
     );

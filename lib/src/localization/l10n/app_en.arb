@@ -56,5 +56,9 @@
   "checkUpdateError": "Couldn't connect to the server to check for updates.",
   "checkUpdateSuccess": "Perfect, the application is updated!",
   "checkUpdateWarning": "Go to the store and update the application!",
-  "ok": "OK"
+  "ok": "OK",
+  "retry": "Retry",
+  "conventional": "Conventional",
+  "biologic": "Biologic",
+  "biodynamic": "Biodynamic"
 }

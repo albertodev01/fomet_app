@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:fomet_api_client/fomet_api_client.dart';
+import 'package:fomet_app/src/features/products/pages/products_page.dart';
+import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/routing/route_names.dart';
 import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 import 'package:go_router/go_router.dart';
 
+/// Used inside [ProductsPage] to show a filterable list of all Fomet products.
 class ProductsResult extends StatelessWidget {
+  /// The products list.
   final List<FometProduct> products;
+
+  /// Creates a [ProductsResult] widget.
   const ProductsResult({
     required this.products,
     super.key,
@@ -14,36 +20,77 @@ class ProductsResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
       itemCount: products.length,
       itemBuilder: (context, index) {
         final element = products[index];
 
-        return ListTile(
+        return FometCard(
           onTap: () {
             context.productsPageState.selectedProduct = element;
             context.go('$productsPagePath/$productDetailsPath');
           },
-          title: Text(
+          padding: const EdgeInsets.symmetric(
+            vertical: FometDimensions.space2x,
+          ),
+          content: Text(
             element.description,
             style: FometTypography.regular,
           ),
-          subtitle: Column(
+          secondaryContent: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                element.categoryDescription,
-                style: FometTypography.regular,
+              _SecondaryContent(
+                title: context.l10n.category,
+                value: element.categoryDescription,
               ),
-              Text(
-                element.varietyDescription,
-                style: FometTypography.regular,
+              const SizedBox(height: 8),
+              _SecondaryContent(
+                title: context.l10n.variety,
+                value: element.varietyDescription,
               ),
             ],
           ),
+          trailingIcon: const Icon(
+            Icons.chevron_right,
+            color: FometColors.secondary,
+          ),
         );
       },
-      separatorBuilder: (_, __) => const SizedBox(height: 16),
+    );
+  }
+}
+
+/// The secondary content of a [FometCard] widget in the list.
+class _SecondaryContent extends StatelessWidget {
+  /// The property titile.
+  final String title;
+
+  /// The property value.
+  final String value;
+
+  /// Creates a [_SecondaryContent] widget.
+  const _SecondaryContent({
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        text: '$title: ',
+        style: FometTypography.semiBold.copyWith(
+          color: FometColors.primary,
+        ),
+        children: [
+          TextSpan(
+            text: value,
+            style: FometTypography.regular,
+          ),
+        ],
+      ),
     );
   }
 }
