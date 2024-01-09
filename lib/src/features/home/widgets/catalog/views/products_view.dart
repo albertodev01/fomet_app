@@ -6,6 +6,7 @@ import 'package:fomet_app/src/localization/localization.dart';
 import 'package:fomet_app/src/utils/extensions.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
 import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
+import 'package:fomet_app/src/utils/widgets/no_products_found.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 /// A view of [CatalogPage] that allows selecting the variety of a product.
@@ -56,19 +57,30 @@ class _ProductsViewState extends State<ProductsView> {
       children: [
         SectionHeader(
           title: context.l10n.products,
-          backButtonTap: () async => widget.controller.animateToPage(
-            2,
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.linear,
-          ),
+          backButtonTap: () async {
+            // Clears the kind.
+            context.catalogState.kind = const (code: '', description: '');
+
+            // Goes back to the previous page.
+            await widget.controller.animateToPage(
+              2,
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.linear,
+            );
+          },
         ),
         Expanded(
           child: FometFutureBuilder<List<FometCatalogItem>>(
             future: future,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             onSuccess: (data) {
-              return ListView.builder(
+              if (data.isEmpty) {
+                return const NoProductsFound();
+              }
+
+              return ListView.separated(
                 itemCount: data.length,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
                 itemBuilder: (context, index) {
                   final item = data[index];
 

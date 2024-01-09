@@ -27,7 +27,12 @@ final appRouter = GoRouter(
   routes: [
     ShellRoute(
       navigatorKey: _bottomNavigatorKey,
-      builder: (_, __, child) => FometPageScaffold(child: child),
+      builder: (_, __, child) {
+        return InheritedObject<CatalogPageState>(
+          object: CatalogPageState(),
+          child: FometPageScaffold(child: child),
+        );
+      },
       routes: [
         GoRoute(
           path: homePagePath,
@@ -59,10 +64,7 @@ final appRouter = GoRouter(
         GoRoute(
           path: catalogPagePath,
           parentNavigatorKey: _bottomNavigatorKey,
-          builder: (_, __) => InheritedObject<CatalogPageState>(
-            object: CatalogPageState(),
-            child: const ShellPageWrapper(child: CatalogPage()),
-          ),
+          builder: (_, __) => const ShellPageWrapper(child: CatalogPage()),
         ),
         GoRoute(
           path: qrScanPath,

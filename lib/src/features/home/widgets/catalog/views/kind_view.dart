@@ -40,8 +40,8 @@ class KindView extends StatelessWidget {
         SectionHeader(
           title: context.l10n.kind,
           backButtonTap: () async {
-            // Clears the catalog kind.
-            context.catalogState.kind = const (code: '', description: '');
+            // Clears the variety kind.
+            context.catalogState.variety = const (code: '', description: '');
 
             // Goes back to the previous page.
             await controller.animateToPage(

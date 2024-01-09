@@ -6,6 +6,7 @@ import 'package:fomet_app/src/features/home/widgets/catalog/section_header.dart'
 import 'package:fomet_app/src/features/home/widgets/catalog/views/products_view.dart';
 import 'package:fomet_app/src/utils/widgets/fomet_future_builder.dart';
 import 'package:fomet_app/src/utils/widgets/inherited_object.dart';
+import 'package:fomet_app/src/utils/widgets/no_products_found.dart';
 import 'package:fomet_ui/fomet_ui.dart';
 
 import '../../../../../mock_wrapper.dart';
@@ -35,6 +36,29 @@ void main() {
           findsOneWidget,
         );
         expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      });
+
+      testWidgets('Empty response test', (tester) async {
+        await tester.pumpWidget(
+          InheritedObject<CatalogPageState>(
+            object: CatalogPageState(),
+            child: MockWrapper(
+              child: ProductsView(
+                controller: PageController(),
+                mockClient: FometMockClient(
+                  response: catalogProductsEmptyTestResponse,
+                ),
+              ),
+            ),
+          ),
+        );
+
+        await tester.pump();
+
+        expect(find.byType(ProductsView), findsOneWidget);
+        expect(find.byType(SectionHeader), findsOneWidget);
+        expect(find.byType(FometCard), findsNothing);
+        expect(find.byType(NoProductsFound), findsOneWidget);
       });
 
       testWidgets('Tap on item', (tester) async {
@@ -108,6 +132,29 @@ void main() {
           matchesGoldenFile('goldens/products_view.png'),
         );
       });
+
+      testWidgets('CategoryView', (tester) async {
+        await tester.pumpWidget(
+          InheritedObject<CatalogPageState>(
+            object: CatalogPageState(),
+            child: MockWrapper(
+              child: ProductsView(
+                controller: PageController(),
+                mockClient: FometMockClient(
+                  response: catalogProductsEmptyTestResponse,
+                ),
+              ),
+            ),
+          ),
+        );
+
+        await tester.pump();
+
+        await expectLater(
+          find.byType(MockWrapper),
+          matchesGoldenFile('goldens/products_view_empty.png'),
+        );
+      });
     });
   });
 }
@@ -146,6 +193,14 @@ const catalogProductsTestResponse = r'''
             <Descrizione2/>
             <immagine>\FOSRV003RobImmaginiVigoramin-Power.png</immagine>
         </itemA>
+    </Articoli>
+</ElencoArticoli>
+''';
+
+/// An example of a valid XML response for the catalog products list.
+const catalogProductsEmptyTestResponse = '''
+<ElencoArticoli xmlns="http://schemas.datacontract.org/2004/07/FometAppService.CArticoli" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <Articoli>
     </Articoli>
 </ElencoArticoli>
 ''';

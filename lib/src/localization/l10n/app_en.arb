@@ -60,5 +60,6 @@
   "retry": "Retry",
   "conventional": "Conventional",
   "biologic": "Biologic",
-  "biodynamic": "Biodynamic"
+  "biodynamic": "Biodynamic",
+  "noProductsFound": "No products found!"
 }

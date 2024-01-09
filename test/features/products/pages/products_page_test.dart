@@ -42,7 +42,7 @@ void main() {
         expect(find.byType(ProductsResult), findsNothing);
       });
 
-      testWidgets('Smoke test', (tester) async {
+      testWidgets('Products results test', (tester) async {
         await tester.runAsync(
           () => tester.pumpWidget(
             InheritedObject<ProductsPageState>(
