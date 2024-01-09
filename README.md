@@ -24,10 +24,10 @@ It will install on your machine the Flutter version that is used by this project
 
 If you don't use `fvm`, your local Flutter tool will be used and it might not be compatible with this project. This is to make sure that all developers work on the same version. If you don't like to work with the command line, you can configure Android Studio or VS Code to use the Flutter version provided by FVM rather than your global one. In addition, here are some Wiki pages that you might want to read:
 
-1. [Project configuration](#), to learn how the repository is structured and how packages are arranged.
+1. [Project overview](https://github.com/albertodev01/fomet_app/wiki/Project-overview), to learn how the repository is structured and how packages are arranged.
 
-2. [Code quality and testing](#), to know how we do our best to keep the code quality high and which testing strategies we adopt in the project.
+2. [Code quality and testing](https://github.com/albertodev01/fomet_app/wiki/Code-quality), to know how we do our best to keep the code quality high and which testing strategies we adopt in the project.
 
-3. [Localization](#), to know how we avoid hard-coding strings and support multiple locales.
+3. [Localization](https://github.com/albertodev01/fomet_app/wiki/Localization), to know how we avoid hard-coding strings and support multiple locales.
 
 Whenever you merge your branch into `main`, a Flutter web build of the FometApp application is generated and deployed to [GitHub Pages](https://albertodev01.github.io/fomet_app/). In this way, you can always see the status of the latest stable build by running it on your web browser.

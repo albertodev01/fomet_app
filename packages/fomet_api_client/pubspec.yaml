@@ -1,0 +1,16 @@
+name: fomet_api_client
+description: The HTTP client of the FometApp application.
+version: 1.0.0
+
+environment:
+  sdk: ^3.2.3
+
+dependencies:
+  # Used for making HTTP requests.
+  http: ^1.1.2
+
+  # User for parsing XML strings.
+  xml: ^6.5.0
+
+dev_dependencies:
+  test: ^1.25.0
